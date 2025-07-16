@@ -600,6 +600,8 @@ progress {
 
 .img-fluid {
   max-width: 100%;
+  min-width: 18rem;
+  max-height: 15rem;
   height: auto;
   border-radius: 10%;
 }
@@ -10948,7 +10950,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../assets/img/header-bg.jpg");
+  background-image: url("../assets/img/logos/Routine_logo.png"); align-items: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
