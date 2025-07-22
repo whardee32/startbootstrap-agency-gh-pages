@@ -4,29 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home Benefits - Routine Relief</title>
-    <meta charset="utf-8" />
-    <meta name="description" content="Routine Relief Home Services" />
-    <meta name="author" content="Routine Relief Team" />
-    <title>Routine Relief - Pricing</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
-    <style>
+  <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f5f5f5;
+      padding-top: 80px; /* prevent content from hiding behind navbar */
+    }
+
+    nav {
+      background-color: #000000; /* pure black */
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;       /* keeps it fixed on screen */
+      top: 0;                /* anchors it to the top */
+      width: 100%;           /* spans full width */
+      z-index: 1000;         /* makes sure it's on top of other content */
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
     }
 
     .hero {
-      background-color: #ffc800;
+      background-color: #c60000;
       color: white;
       padding: 4rem 2rem;
       text-align: center;
@@ -45,7 +69,7 @@
       background-color: #fff;
       padding: 4rem 2rem 3rem;
       text-align: center;
-      max-width: 1200px;
+      max-width: 1400px;
       margin: auto;
     }
 
@@ -94,18 +118,15 @@
     }
 
     .benefits-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 3rem auto;
       padding: 0 1rem;
     }
 
     .benefit-card {
-      flex: 1 1 300px;
-      max-width: 350px;
       background: #fff;
       border-radius: 10px;
       padding: 2rem;
@@ -133,34 +154,19 @@
       font-size: 1rem;
       color: #333;
     }
-
-    .offset {
-      margin-left: auto;
-      margin-right: auto;
-    }
   </style>
 </head>
 <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href=pricing.html>Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link" href=benefits.html>Benefits</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav><br><br><br><br>
+  <nav>
+    <div class="logo">Routine Relief</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="benefits.html">Benefits</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
   <section class="hero">
     <h1>Why Regular Filter Changes Matter</h1>
     <p>Cleaner air. Safer water. Lower bills. Healthier living.</p>
@@ -203,12 +209,12 @@
       <h3>Refrigerator Water Filters</h3>
       <p>Removes chlorine, heavy metals, and pollutants so your fridge water tastes fresh and is safer to drink.</p>
     </div>
-    <div class="benefit-card offset">
+    <div class="benefit-card" style="grid-column: 2 / span 1;">
       <img src="https://img.icons8.com/ios-filled/50/fountain.png" alt="Drinking Fountain Icon">
       <h3>Drinking Fountain Filters</h3>
       <p>Ensures cleaner, better-tasting drinking water — especially important in shared or public spaces in your home.</p>
     </div>
-    <div class="benefit-card offset">
+    <div class="benefit-card" style="grid-column: 2 / span 1;">
       <img src="https://img.icons8.com/ios-filled/50/filter.png" alt="Whole House Filter Icon">
       <h3>Whole House Water Filters</h3>
       <p>Protects your plumbing, bath, and drinking water from sediment, rust, and harmful contaminants.</p>
