@@ -257,56 +257,65 @@
                 <!-- To make this form functional, sign up at-->
                 <!-- https://startbootstrap.com/solution/contact-forms-->
                 <!-- to get an API token!-->
-                <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                    <div class="row align-items-stretch mb-5">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <!-- Name input-->
-                                <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
-                            </div>
-                            <div class="form-group">
-                                <!-- Email address input-->
-                                <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
-                                <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                                <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                            </div>
-                            <div class="form-group mb-md-0">
-                                <!-- Phone number input-->
-                                <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
-                                <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group form-group-textarea mb-md-0">
-                                <!-- Message input-->
-                                <textarea class="form-control" id="message" placeholder="Your Message *" data-sb-validations="required"></textarea>
-                                <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
-                    <div class="d-none" id="submitSuccessMessage">
-                        <div class="text-center text-white mb-3">
-                            <div class="fw-bolder">Form submission successful!</div>
-                            To activate this form, sign up at
-                            <br />
-                            <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                        </div>
-                    </div>
-                    <!-- Submit error message-->
-                    <!---->
-                    <!-- This is what your users will see when there is-->
-                    <!-- an error submitting the form-->
-                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                    <!-- Submit Button-->
-                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
-                </form>
+ <div class="container px-5 my-5">
+    <form id="contactForm" data-sb-form-api-token="2c17f01c-93cf-4cb9-8cdc-be0c123d6449">
+        <div class="form-floating mb-3">
+            <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
+            <label for="emailAddress">Email Address</label>
+            <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+            <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" id="phoneNumber" type="text" placeholder="Phone Number" data-sb-validations="required" />
+            <label for="phoneNumber">Phone Number</label>
+            <div class="invalid-feedback" data-sb-feedback="phoneNumber:required">Phone Number is required.</div>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" id="city" type="text" placeholder="City" data-sb-validations="required" />
+            <label for="city">City</label>
+            <div class="invalid-feedback" data-sb-feedback="city:required">City is required.</div>
+        </div>
+        <div class="mb-3">
+  <label class="form-label d-block text-white">Subscription Interest:</label>
+<div class="form-check">
+    <input class="form-check-input" id="basic" type="checkbox" name="subscriptionInterest" data-sb-validations="required" />
+    <label class="form-check-label text-white" for="basic">Basic</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" id="plus" type="checkbox" name="subscriptionInterest" data-sb-validations="required" />
+    <label class="form-check-label text-white" for="plus">Plus</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" id="popular" type="checkbox" name="subscriptionInterest" data-sb-validations="required" />
+    <label class="form-check-label text-white" for="popular">Popular</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" id="custom" type="checkbox" name="subscriptionInterest" data-sb-validations="required" />
+    <label class="form-check-label text-white" for="custom">Custom</label>
+</div>
+<div class="invalid-feedback text-white" data-sb-feedback="subscriptionInterest:required">One option is required.</div>
+
+        </div>
+        <div class="form-floating mb-3">
+            <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations=""></textarea>
+            <label for="message">Message</label>
+        </div>
+        <div class="d-none" id="submitSuccessMessage">
+            <div class="text-center mb-3">
+                <div class="fw-bolder">Form submission successful!</div>
+                <p>To activate this form, sign up at</p>
+                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
             </div>
-        </section>
+        </div>
+        <div class="d-none" id="submitErrorMessage">
+            <div class="text-center text-danger mb-3">Error sending message!</div>
+        </div>
+        <div class="d-grid">
+            <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
         <!-- Footer-->
         <footer class="footer py-4">
             <div class="container">
