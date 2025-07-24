@@ -10950,7 +10950,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("../assets/img/logos/circle_logo.png"); align-items: center;
+  background-image: url("../assets/img/logos/navbar-optimized.png"); align-items: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
@@ -11316,4 +11316,8 @@ section#contact form#contactForm :-ms-input-placeholder {
   text-align: center;
   font-size: 0.9rem;
   font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.form-floating > .form-control::placeholder {
+  color: transparent; /* hide ghost placeholder */
 }

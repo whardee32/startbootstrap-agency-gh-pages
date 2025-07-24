@@ -5,9 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>Routine Relief</title>
+
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLXDGHD2FV"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-BLXDGHD2FV');
+        </script>
+
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="assets/img/logos/r_logo_orange.svg" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -15,12 +25,101 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
-    </head>
+    
+<style>
+.masthead {
+  background-image: url('assets/img/logos/navbar-optimized.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #d9aa00;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+.masthead::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 1;
+}
+.masthead .container {
+  position: relative;
+  z-index: 2;
+}
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    .section-heading {
+      font-weight: 700;
+    }
+
+    .divider {
+      border: none;
+      height: 4px;
+      width: 60px;
+      background-color: #d9aa00;
+      margin: 0 auto 30px;
+    }
+
+    .portfolio-item {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      transition: transform 0.2s ease;
+      height: 100%;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .portfolio-item img {
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .portfolio-item img:hover {
+      transform: scale(1.03);
+      opacity: 0.9;
+    }
+
+    .portfolio-caption {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .portfolio-caption-heading {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .portfolio-caption-subheading {
+      font-size: 0.95rem;
+      color: #6c757d;
+    }
+</style>
+
+</head>
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="assets/img/logos/circle_logo.png" alt="..." /></a>
+                <a class="navbar-brand" href="#page-top"><img src="assets/img/logos/r_logo_orange.svg" alt="..." / class="logo-img"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -82,10 +181,10 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div><br><br><br>
             <!-- Bottom Row: 2 Items Centered -->
             <div class="row justify-content-center">
-              <div class="col-lg-4 col-sm-6 mb-4">
+              <div class="col-lg-4 col-sm-6 mb-6">
                 <div class="portfolio-item">
                   <div class="portfolio-hover"></div>
                   <img class="img-fluid" src="assets/img/Services/single_ezh2o_copy_8.jpg" alt="Drinking Fountains" />
@@ -95,7 +194,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
+              <div class="col-lg-4 col-sm-6 mb-6">
                 <div class="portfolio-item">
                   <div class="portfolio-hover"></div>
                   <img class="img-fluid" src="assets/img/Services/Whole.jpg" alt="Whole House Filters" />
@@ -120,7 +219,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-6 d-flex justify-content-center">
                         <div class="team-member">
-                            <img class="rounded-circle" src="assets/img/team/Isaiah.jpg" alt="Isaiah" />
+                            <img class="rounded-circle" src="assets/img/team/Isaiah_circular.png" alt="Isaiah" />
                             <h4>Isaiah Horlacher</h4>
                             <p class="text-muted">Co-founder</p>
                             <a class="btn btn-dark btn-social mx-2" href=https://www.linkedin.com/in/isaiah-horlacher-b1a17a295/ aria-label="Isaiah Horlacher LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
@@ -130,7 +229,7 @@
                     </div>
                     <div class="col-12 col-md-6 d-flex justify-content-center">
                         <div class="team-member">
-                            <img class="rounded-circle" src="assets/img/team/Will.jpg" alt="Will" />
+                            <img class="rounded-circle" src="assets/img/team/Will_circular_no_crop.png" alt="Will" />
                             <h4>Will Hardee</h4>
                             <p class="text-muted">Co-founder</p>
                             <a class="btn btn-dark btn-social mx-2" href=https://www.linkedin.com/in/will-hardee-0a0a56255/ aria-label="Will Hardee LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
@@ -164,18 +263,18 @@
     <form id="contactForm" data-sb-form-api-token="2c17f01c-93cf-4cb9-8cdc-be0c123d6449">
         <div class="form-floating mb-3">
             <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
-            <label for="emailAddress">Email Address</label>
+            <label for="emailAddress"></label>
             <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
             <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
         </div>
         <div class="form-floating mb-3">
             <input class="form-control" id="phoneNumber" type="text" placeholder="Phone Number" data-sb-validations="required" />
-            <label for="phoneNumber">Phone Number</label>
+            <label for="phoneNumber"></label>
             <div class="invalid-feedback" data-sb-feedback="phoneNumber:required">Phone Number is required.</div>
         </div>
         <div class="form-floating mb-3">
             <input class="form-control" id="city" type="text" placeholder="City" data-sb-validations="required" />
-            <label for="city">City</label>
+            <label for="city"></label>
             <div class="invalid-feedback" data-sb-feedback="city:required">City is required.</div>
         </div>
         <div class="mb-3">
@@ -201,7 +300,7 @@
         </div>
         <div class="form-floating mb-3">
             <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations=""></textarea>
-            <label for="message">Message</label>
+            <label for="message"></label>
         </div>
         <div class="d-none" id="submitSuccessMessage">
             <div class="text-center mb-3">
