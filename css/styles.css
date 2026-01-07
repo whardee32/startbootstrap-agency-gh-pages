@@ -11466,3 +11466,42 @@ section#contact form#contactForm :-ms-input-placeholder {
 #contact .trust-muted {
   color: rgba(255, 255, 255, 0.75) !important;
 }
+
+/* FORCE white text for all form text in contact section */
+#contact,
+#contact label,
+#contact .form-label,
+#contact .form-check-label,
+#contact .form-text {
+  color: #ffffff !important;
+}
+
+/* Inputs + selects text */
+#contact .form-control,
+#contact .form-select {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Placeholder text */
+#contact .form-control::placeholder,
+#contact textarea::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Radio + checkbox labels */
+#contact .form-check-input:checked + .form-check-label {
+  color: #ffffff !important;
+}
+
+/* Dropdown options (important) */
+#contact select option {
+  color: #212529; /* keep readable when dropdown opens */
+  background: #ffffff;
+}
+#contact .form-control:focus,
+#contact .form-select:focus {
+  border-color: #d9aa00;
+  box-shadow: 0 0 0 0.15rem rgba(217,170,0,0.35);
+}
