@@ -800,4 +800,31 @@
     <!-- SB Forms JS (include ONCE) -->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
   </body>
+  <script>
+  // Any link that should go to #contact from inside a modal
+  document.querySelectorAll('a[href="#contact"]').forEach((a) => {
+    a.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      // Close the modal if we're inside one
+      const modalEl = a.closest(".modal");
+      if (modalEl) {
+        const modalInstance = bootstrap.Modal.getInstance(modalEl);
+        modalInstance?.hide();
+
+        // After the modal finishes closing, scroll
+        modalEl.addEventListener(
+          "hidden.bs.modal",
+          () => {
+            document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+          },
+          { once: true }
+        );
+      } else {
+        // Not in a modal? Just scroll
+        document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  });
+</script>
 </html>
