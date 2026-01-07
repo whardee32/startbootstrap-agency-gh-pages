@@ -11321,3 +11321,148 @@ section#contact form#contactForm :-ms-input-placeholder {
 .form-floating > .form-control::placeholder {
   color: transparent; /* hide ghost placeholder */
 }
+
+.hero {
+    background: linear-gradient(180deg, rgba(217,170,0,0.18) 0%, rgba(248,249,250,1) 55%);
+    padding-top: 110px; /* navbar offset */
+    padding-bottom: 60px;
+  }
+
+  .hero-card {
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    padding: 44px 44px;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 10px;
+  }
+
+  .hero h1 {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+
+  .hero p.lead {
+    color: #495057;
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+  }
+
+  .hero-bullets {
+    margin: 0 0 22px 0;
+    padding: 0;
+    list-style: none;
+  }
+  .hero-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #212529;
+  }
+  .hero-bullets i {
+    margin-top: 3px;
+    color: #d9aa00;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-top: 6px;
+  }
+
+  /* Primary button: keep your Bootstrap btn-primary but make it feel more premium */
+  .btn-hero-primary {
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  /* Secondary CTA link */
+  .hero-secondary {
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .hero-secondary:hover {
+    text-decoration: underline;
+  }
+
+  /* Right-side image */
+  .hero-visual {
+    height: 100%;
+    min-height: 320px;
+    background: #f1f3f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Trust bar */
+  .trustbar {
+    margin-top: 18px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    padding: 14px 16px;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #212529;
+    font-weight: 600;
+  }
+  .trust-item i {
+    color: #d9aa00;
+  }
+  .trust-muted {
+    font-weight: 500;
+    color: #6c757d;
+    margin-left: 6px;
+  }
+
+  /* Mobile tweaks */
+  @media (max-width: 991px) {
+    .hero-inner { padding: 28px 22px; }
+    .hero { padding-top: 92px; }
+    .hero-visual { min-height: 240px; }
+  }
+#contact .form-control::placeholder,
+#contact textarea::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+#contact .section-heading,
+#contact .form-label,
+#contact label,
+#contact .form-check-label {
+  color: #ffffff !important;
+}
+
+/* Optional: make any muted text readable too */
+#contact .text-muted,
+#contact .trust-muted {
+  color: rgba(255, 255, 255, 0.75) !important;
+}

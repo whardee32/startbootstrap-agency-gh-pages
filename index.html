@@ -1,558 +1,803 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Routine Relief</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Routine Relief helps Utah County homeowners stay on top of home maintenance with scheduled filter replacements and water softener pellet refills." />
+    <meta name="author" content="" />
+    <title>Routine Relief | Home Maintenance on Autopilot</title>
 
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLXDGHD2FV"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-BLXDGHD2FV');
-        </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLXDGHD2FV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BLXDGHD2FV');
+    </script>
 
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/img/logos/r_logo_orange.svg" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    
-<style>
-.masthead {
-  background-image: url('assets/img/logos/navbar-optimized.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #d9aa00;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-}
-.masthead::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0,0,0,0.3);
-  z-index: 1;
-}
-.masthead .container {
-  position: relative;
-  z-index: 2;
-}
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/img/logos/r_logo_orange.svg" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
 
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 0;
-    }
+    <style>
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+      }
 
-    .section-heading {
-      font-weight: 700;
-    }
+      .section-heading { font-weight: 700; }
 
-    .divider {
-      border: none;
-      height: 4px;
-      width: 60px;
-      background-color: #d9aa00;
-      margin: 0 auto 30px;
-    }
+      .divider {
+        border: none;
+        height: 4px;
+        width: 60px;
+        background-color: #d9aa00;
+        margin: 0 auto 30px;
+      }
 
-    .portfolio-item {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      padding: 15px;
-      transition: transform 0.2s ease;
-      height: 100%;
-    }
+      .portfolio-item {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        transition: transform 0.2s ease;
+        height: 100%;
+      }
+      .portfolio-item:hover { transform: translateY(-5px); }
 
-    .portfolio-item:hover {
-      transform: translateY(-5px);
-    }
+      .portfolio-item img {
+        object-fit: cover;
+        aspect-ratio: 4 / 3;
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        transition: transform 0.3s ease-in-out;
+      }
+      .portfolio-item img:hover { transform: scale(1.03); opacity: 0.9; }
 
-    .portfolio-item img {
-      object-fit: cover;
-      aspect-ratio: 4 / 3;
-      width: 100%;
-      height: auto;
-      border-radius: 15px;
-      transition: transform 0.3s ease-in-out;
-    }
+      .portfolio-caption { text-align: center; margin-top: 10px; }
+      .portfolio-caption-heading { font-weight: 600; font-size: 1.1rem; }
+      .portfolio-caption-subheading { font-size: 0.95rem; color: #6c757d; }
 
-    .portfolio-item img:hover {
-      transform: scale(1.03);
-      opacity: 0.9;
-    }
+      /* Make cards clickable */
+      .service-card-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        height: 100%;
+      }
+      .service-card-link:focus-visible {
+        outline: 3px solid rgba(217,170,0,0.55);
+        outline-offset: 6px;
+        border-radius: 14px;
+      }
+      .service-card-link .portfolio-item { cursor: pointer; }
 
-    .portfolio-caption {
-      text-align: center;
-      margin-top: 10px;
-    }
+      /* ===== HERO ===== */
+      .hero {
+        background: linear-gradient(180deg, rgba(217,170,0,0.18) 0%, rgba(248,249,250,1) 55%);
+        padding-top: 110px; /* navbar offset */
+        padding-bottom: 36px;
+      }
 
-    .portfolio-caption-heading {
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
+      .hero-card {
+        background: #ffffff;
+        border-radius: 18px;
+        box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+        overflow: hidden;
+      }
 
-    .portfolio-caption-subheading {
-      font-size: 0.95rem;
-      color: #6c757d;
-    }
-</style>
+      .hero-inner { padding: 44px 44px; }
 
-</head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="assets/img/logos/r_logo_orange.svg" alt="..." / class="logo-img"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href=pricing.html>Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link" href=benefits.html>Benefits</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Sign Up</a></li>
-                    </ul>
+      .hero-eyebrow {
+        display: inline-block;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        color: #6c757d;
+        margin-bottom: 10px;
+      }
+
+      .hero h1 {
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+        margin-bottom: 14px;
+      }
+
+      .hero p.lead {
+        color: #495057;
+        font-size: 1.15rem;
+        margin-bottom: 18px;
+      }
+
+      .hero-bullets {
+        margin: 0 0 22px 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .hero-bullets li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 10px;
+        color: #212529;
+      }
+
+      .hero-bullets i { margin-top: 3px; color: #d9aa00; }
+
+      .hero-ctas {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin-top: 6px;
+      }
+
+      .btn-hero-primary {
+        padding: 14px 18px;
+        border-radius: 12px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .hero-secondary {
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .hero-secondary:hover { text-decoration: underline; }
+
+      .hero-visual {
+        height: 100%;
+        min-height: 320px;
+        background: #f1f3f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .trustbar {
+        margin-top: 18px;
+        background: #ffffff;
+        border-radius: 14px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+        padding: 14px 16px;
+      }
+
+      .trust-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #212529;
+        font-weight: 600;
+      }
+
+      .trust-item i { color: #d9aa00; }
+
+      .trust-muted {
+        font-weight: 500;
+        color: #6c757d;
+        margin-left: 6px;
+      }
+
+      /* ===== HOW IT WORKS ===== */
+      .how-card {
+        background: #ffffff;
+        border-radius: 14px;
+        box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+        padding: 18px 18px;
+        height: 100%;
+      }
+
+      .how-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(217,170,0,0.16);
+        color: #d9aa00;
+        margin-bottom: 10px;
+      }
+
+      /* ===== CTA BAND ===== */
+      .cta-band {
+        background: #ffffff;
+        border-radius: 18px;
+        box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+        padding: 22px 22px;
+      }
+
+      /* Form labels cleaner */
+      .form-label { font-weight: 600; }
+
+      /* Modal list styling */
+      .benefit-list {
+        padding-left: 0;
+        list-style: none;
+        margin-bottom: 0;
+      }
+      .benefit-list li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        color: #212529;
+      }
+      .benefit-list i {
+        margin-top: 3px;
+        color: #d9aa00;
+      }
+
+      @media (max-width: 991px) {
+        .hero-inner { padding: 28px 22px; }
+        .hero { padding-top: 92px; }
+        .hero-visual { min-height: 240px; }
+      }
+    </style>
+  </head>
+
+  <body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="#page-top">
+          <img src="assets/img/logos/r_logo_orange.svg" alt="Routine Relief" class="logo-img" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+            <li class="nav-item"><a class="nav-link" href="benefits.html">Benefits</a></li>
+            <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Sign Up</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="row g-0 align-items-stretch">
+            <div class="col-lg-6">
+              <div class="hero-inner">
+                <span class="hero-eyebrow">Home maintenance, on autopilot</span>
+                <h1 class="display-5">Never Forget Home Maintenance Again</h1>
+
+                <p class="lead">
+                  We deliver and replace filters and refill water softener pellets on a simple monthly plan —
+                  so your home runs better without you thinking about it.
+                </p>
+
+                <ul class="hero-bullets">
+                  <li><i class="fa-solid fa-circle-check"></i> HVAC, fridge, whole-house &amp; more</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Water softener pellet refills on schedule</li>
+                  <li><i class="fa-solid fa-circle-check"></i> No contracts <span class="trust-muted">·</span> Cancel anytime</li>
+                </ul>
+
+                <div class="hero-ctas">
+                  <a class="btn btn-primary btn-hero-primary text-uppercase" href="pricing.html">
+                    View Pricing — Plans From $19.99/mo
+                  </a>
+                  <a class="hero-secondary" href="#services">
+                    See How It Works <i class="fa-solid fa-arrow-right ms-1"></i>
+                  </a>
                 </div>
+              </div>
             </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container">
-                <div class="masthead-heading text-uppercase">Routine Relief</div>
-                <div class="masthead-subheading">We handle what you forget!</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
-            </div>
-        </header>
-        <!-- Services Grid -->
-        <section class="page-section bg-light" id="services">
-          <div class="container">
-            <div class="text-center">
-              <h2 class="section-heading text-uppercase">Services</h2><br><br>
-            </div>
-            <!-- Top Row: 3 Items -->
-            <div class="row">
-              <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="portfolio-item">
-                  <div class="portfolio-hover"></div>
-                  <img class="img-fluid" src="assets/img/Services/Water pellets.avif" alt="Water Softeners" />
-                  <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">Water Softeners</div>
-                    <div class="portfolio-caption-subheading text-muted">Pellet replenishment</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="portfolio-item">
-                  <div class="portfolio-hover"></div>
-                  <img class="img-fluid" src="assets/img/Services/HVAC Filter.png" alt="HVAC" />
-                  <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">HVAC</div>
-                    <div class="portfolio-caption-subheading text-muted">Filter Replacement</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="portfolio-item">
-                  <div class="portfolio-hover"></div>
-                  <img class="img-fluid" src="assets/img/Services/ge-refrigerator-water-filters-xwfe-4f_600.avif" alt="Kitchen Appliances" />
-                  <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">Kitchen Appliances</div>
-                    <div class="portfolio-caption-subheading text-muted">Filter Replacement</div>
-                  </div>
-                </div>
-              </div>
-            </div><br><br><br>
-            <!-- Bottom Row: 2 Items Centered -->
-            <div class="row justify-content-center">
-              <div class="col-lg-4 col-sm-6 mb-6">
-                <div class="portfolio-item">
-                  <div class="portfolio-hover"></div>
-                  <img class="img-fluid" src="assets/img/Services/single_ezh2o_copy_8.jpg" alt="Drinking Fountains" />
-                  <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">Drinking Fountains</div>
-                    <div class="portfolio-caption-subheading text-muted">Filter replacement</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-4 col-sm-6 mb-6">
-                <div class="portfolio-item">
-                  <div class="portfolio-hover"></div>
-                  <img class="img-fluid" src="assets/img/Services/Whole.jpg" alt="Whole House Filters" />
-                  <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">Whole House Filters</div>
-                    <div class="portfolio-caption-subheading text-muted">Filter Replacement</div>
-                  </div>
-                </div>
+
+            <div class="col-lg-6">
+              <div class="hero-visual">
+                <img src="assets/img/Services/HVAC Filter.png" alt="Routine Relief service" />
               </div>
             </div>
           </div>
-        </section>
-    </body>
-</html>
+        </div>
 
-        <!-- Team-->
-        <section class="page-section bg-light" id="team">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Our Team</h2><br><br>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="team-member">
-                            <img class="rounded-circle" src="assets/img/team/Isaiah_circular.png" alt="Isaiah" />
-                            <h4>Isaiah Horlacher</h4>
-                            <p class="text-muted">Co-founder</p>
-                            <a class="btn btn-dark btn-social mx-2" href=https://www.linkedin.com/in/isaiah-horlacher-b1a17a295/ aria-label="Isaiah Horlacher LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href=https://www.facebook.com/isaiah.horlacher.3 aria-label="Isaiah Horlacher Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href=https://www.instagram.com/isaiah_horlacher/ aria-label="Isaiah Horlacher Innstagram Profile"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 d-flex justify-content-center">
-                        <div class="team-member">
-                            <img class="rounded-circle" src="assets/img/team/Will_circular_no_crop.png" alt="Will" />
-                            <h4>Will Hardee</h4>
-                            <p class="text-muted">Co-founder</p>
-                            <a class="btn btn-dark btn-social mx-2" href=https://www.linkedin.com/in/will-hardee-0a0a56255/ aria-label="Will Hardee LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href=https://www.facebook.com/william.hardee.4177 aria-label="Will Hardee Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href=https://www.instagram.com/hardee.william/ aria-label="Will Hardee Instagram Profile"><i class="fab fa-instagram"></i></a>                        
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-8 mx-auto text-center">
-                        <p class="large text-muted"></p>
-                    </div>
-                </div>
+        <!-- TRUST BAR -->
+        <div class="trustbar">
+          <div class="row g-3 text-center text-lg-start">
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="trust-item justify-content-center justify-content-lg-start">
+                <i class="fa-solid fa-star"></i>
+                <span>Trusted by homeowners</span>
+              </div>
             </div>
-        </section>
-        <!-- Clients-->
-        <!-- Contact-->
-        <section class="page-section" id="contact">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Sign Up Now!</h2><br>
-                </div>
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- * * SB Forms Contact Form * *-->
-                <!-- * * * * * * * * * * * * * * *-->
-                <!-- This form is pre-integrated with SB Forms.-->
-                <!-- To make this form functional, sign up at-->
-                <!-- https://startbootstrap.com/solution/contact-forms-->
-                <!-- to get an API token!-->
- <div class="container px-5 my-5">
-    <form id="contactForm" data-sb-form-api-token="2c17f01c-93cf-4cb9-8cdc-be0c123d6449">
-        <div class="form-floating mb-3">
-            <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" data-sb-validations="required,email" />
-            <label for="emailAddress"></label>
-            <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
-            <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="trust-item justify-content-center justify-content-lg-start">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Serving Utah County</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="trust-item justify-content-center justify-content-lg-start">
+                <i class="fa-solid fa-file-signature"></i>
+                <span>No contracts</span>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3">
+              <div class="trust-item justify-content-center justify-content-lg-start">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Scheduled service</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-floating mb-3">
-            <input class="form-control" id="phoneNumber" type="text" placeholder="Phone Number" data-sb-validations="required" />
-            <label for="phoneNumber"></label>
-            <div class="invalid-feedback" data-sb-feedback="phoneNumber:required">Phone Number is required.</div>
-        </div>
-        <div class="form-floating mb-3">
-            <input class="form-control" id="city" type="text" placeholder="City" data-sb-validations="required" />
-            <label for="city"></label>
-            <div class="invalid-feedback" data-sb-feedback="city:required">City is required.</div>
-        </div>
-        <div class="mb-3">
-  <label class="form-label d-block text-white">Subscription Interest:</label>
-<div class="form-check">
-    <input class="form-check-input" id="basic" type="checkbox" name="subscriptionInterest" data-sb-validations="required" />
-    <label class="form-check-label text-white" for="basic">Basic</label>
-</div>
-<div class="form-check">
-    <input class="form-check-input" id="plus" type="checkbox" name="subscriptionInterest" data-sb-validations="required" />
-    <label class="form-check-label text-white" for="plus">Plus</label>
-</div>
-<div class="form-check">
-    <input class="form-check-input" id="popular" type="checkbox" name="subscriptionInterest" data-sb-validations="required" />
-    <label class="form-check-label text-white" for="popular">Popular</label>
-</div>
-<div class="form-check">
-    <input class="form-check-input" id="custom" type="checkbox" name="subscriptionInterest" data-sb-validations="required" />
-    <label class="form-check-label text-white" for="custom">Custom</label>
-</div>
-<div class="invalid-feedback text-white" data-sb-feedback="subscriptionInterest:required">One option is required.</div>
+      </div>
+    </header>
 
+    <!-- HOW IT WORKS -->
+    <section class="page-section" id="how-it-works">
+      <div class="container py-4 py-lg-5">
+        <div class="text-center mb-4">
+          <h2 class="section-heading text-uppercase">How It Works</h2>
+          <hr class="divider" />
         </div>
-        <div class="form-floating mb-3">
-            <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations=""></textarea>
-            <label for="message"></label>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="how-card">
+              <div class="how-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+              <h5 class="mb-2 fw-bold">Choose a Plan</h5>
+              <p class="mb-0 text-muted">Pick a plan that fits your home. Not sure? Select “Not sure yet” and we’ll help.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="how-card">
+              <div class="how-icon"><i class="fa-solid fa-truck-fast"></i></div>
+              <h5 class="mb-2 fw-bold">We Deliver + Replace</h5>
+              <p class="mb-0 text-muted">We bring the right filters/pellets and take care of the swap on schedule.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="how-card">
+              <div class="how-icon"><i class="fa-solid fa-house-circle-check"></i></div>
+              <h5 class="mb-2 fw-bold">Relax</h5>
+              <p class="mb-0 text-muted">Your home runs better with zero mental load. No contracts—cancel anytime.</p>
+            </div>
+          </div>
         </div>
-        <div class="d-none" id="submitSuccessMessage">
-            <div class="text-center mb-3">
+
+        <div class="text-center mt-4">
+          <a class="btn btn-primary btn-lg text-uppercase" href="pricing.html">See Pricing</a>
+          <a class="btn btn-outline-secondary btn-lg text-uppercase ms-2" href="#contact">Sign Up</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="page-section bg-light" id="services">
+      <div class="container py-4 py-lg-5">
+        <div class="text-center mb-4">
+          <h2 class="section-heading text-uppercase">Services</h2>
+          <hr class="divider" />
+          <p class="text-muted mb-0">Click a service to see why timing matters.</p>
+        </div>
+
+        <div class="row">
+          <!-- Water Softeners -->
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <a class="service-card-link" href="#" data-bs-toggle="modal" data-bs-target="#modalWaterSoftener" aria-label="Open Water Softeners benefits">
+              <div class="portfolio-item">
+                <img class="img-fluid" src="assets/img/Services/Water pellets.avif" alt="Water Softeners" />
+                <div class="portfolio-caption">
+                  <div class="portfolio-caption-heading">Water Softeners</div>
+                  <div class="portfolio-caption-subheading text-muted">Pellet replenishment</div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- HVAC -->
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <a class="service-card-link" href="#" data-bs-toggle="modal" data-bs-target="#modalHVAC" aria-label="Open HVAC benefits">
+              <div class="portfolio-item">
+                <img class="img-fluid" src="assets/img/Services/HVAC Filter.png" alt="HVAC" />
+                <div class="portfolio-caption">
+                  <div class="portfolio-caption-heading">HVAC</div>
+                  <div class="portfolio-caption-subheading text-muted">Filter Replacement</div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Kitchen Appliances -->
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <a class="service-card-link" href="#" data-bs-toggle="modal" data-bs-target="#modalKitchen" aria-label="Open Kitchen Appliance benefits">
+              <div class="portfolio-item">
+                <img class="img-fluid" src="assets/img/Services/ge-refrigerator-water-filters-xwfe-4f_600.avif" alt="Kitchen Appliances" />
+                <div class="portfolio-caption">
+                  <div class="portfolio-caption-heading">Kitchen Appliances</div>
+                  <div class="portfolio-caption-subheading text-muted">Filter Replacement</div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <!-- Drinking Fountains -->
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <a class="service-card-link" href="#" data-bs-toggle="modal" data-bs-target="#modalFountain" aria-label="Open Drinking Fountain benefits">
+              <div class="portfolio-item">
+                <img class="img-fluid" src="assets/img/Services/single_ezh2o_copy_8.jpg" alt="Drinking Fountains" />
+                <div class="portfolio-caption">
+                  <div class="portfolio-caption-heading">Drinking Fountains</div>
+                  <div class="portfolio-caption-subheading text-muted">Filter replacement</div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Whole House -->
+          <div class="col-lg-4 col-sm-6 mb-4">
+            <a class="service-card-link" href="#" data-bs-toggle="modal" data-bs-target="#modalWholeHouse" aria-label="Open Whole House Filter benefits">
+              <div class="portfolio-item">
+                <img class="img-fluid" src="assets/img/Services/Whole.jpg" alt="Whole House Filters" />
+                <div class="portfolio-caption">
+                  <div class="portfolio-caption-heading">Whole House Filters</div>
+                  <div class="portfolio-caption-subheading text-muted">Filter Replacement</div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- CTA AFTER SERVICES -->
+        <div class="mt-4 mt-lg-5">
+          <div class="cta-band">
+            <div class="row align-items-center g-3">
+              <div class="col-lg-8">
+                <h4 class="mb-1 fw-bold">Ready to put home maintenance on autopilot?</h4>
+                <p class="mb-0 text-muted">See plans, then sign up in under a minute.</p>
+              </div>
+              <div class="col-lg-4 text-lg-end">
+                <a class="btn btn-primary btn-lg text-uppercase" href="pricing.html">View Pricing</a>
+                <a class="btn btn-outline-secondary btn-lg text-uppercase ms-2" href="#contact">Sign Up</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Team-->
+    <section class="page-section bg-light" id="team">
+      <div class="container py-4 py-lg-5">
+        <div class="text-center mb-4">
+          <h2 class="section-heading text-uppercase">Our Team</h2>
+          <hr class="divider" />
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6 d-flex justify-content-center">
+            <div class="team-member">
+              <img class="rounded-circle" src="assets/img/team/Isaiah_circular.png" alt="Isaiah" />
+              <h4>Isaiah Horlacher</h4>
+              <p class="text-muted">Co-founder</p>
+              <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/isaiah-horlacher-b1a17a295/" aria-label="Isaiah Horlacher LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+              <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/isaiah.horlacher.3" aria-label="Isaiah Horlacher Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/isaiah_horlacher/" aria-label="Isaiah Horlacher Instagram Profile"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 d-flex justify-content-center">
+            <div class="team-member">
+              <img class="rounded-circle" src="assets/img/team/Will_circular_no_crop.png" alt="Will" />
+              <h4>Will Hardee</h4>
+              <p class="text-muted">Co-founder</p>
+              <a class="btn btn-dark btn-social mx-2" href="https://www.linkedin.com/in/will-hardee-0a0a56255/" aria-label="Will Hardee LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+              <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/william.hardee.4177" aria-label="Will Hardee Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+              <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/hardee.william/" aria-label="Will Hardee Instagram Profile"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <p class="large text-muted"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact-->
+    <section class="page-section" id="contact">
+      <div class="container py-4 py-lg-5">
+        <div class="text-center mb-4">
+          <h2 class="section-heading text-uppercase">Sign Up Now!</h2>
+          <hr class="divider" />
+        </div>
+
+        <div class="container px-5 my-4">
+          <form id="contactForm" data-sb-form-api-token="2c17f01c-93cf-4cb9-8cdc-be0c123d6449">
+            <div class="mb-3">
+              <label for="emailAddress" class="form-label">Email Address</label>
+              <input class="form-control" id="emailAddress" type="email" placeholder="name@email.com" data-sb-validations="required,email" />
+              <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+              <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address is not valid.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="phoneNumber" class="form-label">Phone Number</label>
+              <input class="form-control" id="phoneNumber" type="text" placeholder="(555) 555-5555" data-sb-validations="required" />
+              <div class="invalid-feedback" data-sb-feedback="phoneNumber:required">Phone Number is required.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="streetAddress" class="form-label">Street Address</label>
+              <input class="form-control" id="streetAddress" type="text" placeholder="123 Main St" data-sb-validations="required" />
+              <div class="invalid-feedback" data-sb-feedback="streetAddress:required">Street Address is required.</div>
+            </div>
+
+            <div class="row g-3">
+              <div class="col-md-7">
+                <div class="mb-3">
+                  <label for="city" class="form-label">City</label>
+                  <input class="form-control" id="city" type="text" placeholder="Lindon" data-sb-validations="required" />
+                  <div class="invalid-feedback" data-sb-feedback="city:required">City is required.</div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="mb-3">
+                  <label for="zip" class="form-label">ZIP Code</label>
+                  <input class="form-control" id="zip" type="text" placeholder="84042" data-sb-validations="required" />
+                  <div class="invalid-feedback" data-sb-feedback="zip:required">ZIP Code is required.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="preferredContact" class="form-label">Preferred Contact Method</label>
+              <select class="form-select" id="preferredContact" data-sb-validations="required">
+                <option value="" selected disabled>Select one</option>
+                <option value="Text">Text</option>
+                <option value="Call">Call</option>
+                <option value="Email">Email</option>
+              </select>
+              <div class="invalid-feedback" data-sb-feedback="preferredContact:required">Please select a contact method.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="serviceFocus" class="form-label">What do you want serviced first?</label>
+              <select class="form-select" id="serviceFocus" data-sb-validations="required">
+                <option value="" selected disabled>Select one</option>
+                <option value="HVAC">HVAC filter</option>
+                <option value="Water Softener">Water softener pellets</option>
+                <option value="Fridge">Fridge filter</option>
+                <option value="Whole House">Whole house filter</option>
+                <option value="Not Sure">Not sure yet</option>
+              </select>
+              <div class="invalid-feedback" data-sb-feedback="serviceFocus:required">Please select an option.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label d-block">Plan Interest:</label>
+
+              <div class="form-check">
+                <input class="form-check-input" id="planBasic" type="radio" name="plan" value="Basic" data-sb-validations="required" />
+                <label class="form-check-label" for="planBasic">Basic</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" id="planPlus" type="radio" name="plan" value="Plus" data-sb-validations="required" />
+                <label class="form-check-label" for="planPlus">Plus</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" id="planPopular" type="radio" name="plan" value="Popular" data-sb-validations="required" />
+                <label class="form-check-label" for="planPopular">Popular</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" id="planCustom" type="radio" name="plan" value="Custom" data-sb-validations="required" />
+                <label class="form-check-label" for="planCustom">Custom</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" id="planNotSure" type="radio" name="plan" value="Not sure yet" data-sb-validations="required" />
+                <label class="form-check-label" for="planNotSure">Not sure yet</label>
+              </div>
+
+              <div class="invalid-feedback" data-sb-feedback="plan:required">Please select one plan.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="message" class="form-label">Message (optional)</label>
+              <textarea class="form-control" id="message" placeholder="Anything we should know?" style="height: 10rem;"></textarea>
+            </div>
+
+            <div class="d-none" id="submitSuccessMessage">
+              <div class="text-center mb-3">
                 <div class="fw-bolder">Form submission successful!</div>
                 <p>To activate this form, sign up at</p>
                 <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+              </div>
             </div>
-        </div>
-        <div class="d-none" id="submitErrorMessage">
-            <div class="text-center text-danger mb-3">Error sending message!</div>
-        </div>
-        <div class="d-grid">
-            <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
-        </div>
-    </form>
-</div>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <!-- Footer-->
-        <footer class="footer py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href=https://www.facebook.com/profile.php?id=61578854420699 aria-label="Will Hardee Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href=https://www.instagram.com/routine_relief/ aria-label="Will Hardee Instagram Profile"><i class="fab fa-instagram"></i></a>                        
-                    </div>
-                    <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
-                    </div>
-                </div>
+
+            <div class="d-none" id="submitErrorMessage">
+              <div class="text-center text-danger mb-3">Error sending message!</div>
             </div>
-        </footer>
-        <!-- Portfolio Modals-->
-        <!-- Portfolio item 1 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Threads
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Illustration
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="d-grid">
+              <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
             </div>
+          </form>
         </div>
-        <!-- Portfolio item 2 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Explore
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Graphic Design
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      </div>
+    </section>
+
+    <!-- Footer-->
+    <footer class="footer py-4">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-4 text-lg-start">Copyright &copy; Routine Relief 2026</div>
+          <div class="col-lg-4 my-3 my-lg-0">
+            <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/profile.php?id=61578854420699" aria-label="Routine Relief Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+            <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/routine_relief/" aria-label="Routine Relief Instagram Profile"><i class="fab fa-instagram"></i></a>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a class="link-dark text-decoration-none me-3" href="privacy.html">Privacy Policy</a>
+            <a class="link-dark text-decoration-none" href="terms.html">Terms of Use</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =======================
+         SERVICE BENEFITS MODALS
+         ======================= -->
+
+    <!-- Water Softener Modal -->
+    <div class="modal fade" id="modalWaterSoftener" tabindex="-1" aria-hidden="true" aria-labelledby="modalWaterSoftenerLabel">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="modalWaterSoftenerLabel">Water Softeners — Why Timely Pellet Refills Matter</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul class="benefit-list">
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Protects appliances & plumbing:</strong> consistent soft water reduces mineral buildup over time.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Softer skin + better laundry:</strong> soap works better and fabrics stay cleaner.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Avoids “running out” surprises:</strong> no hard-water swing because the salt tank went empty.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Less spotting:</strong> fewer white marks on faucets, showers, and glass.</span></li>
+            </ul>
+            <div class="mt-4">
+              <a class="btn btn-primary text-uppercase" href="pricing.html">View Pricing</a>
+              <a class="btn btn-outline-secondary text-uppercase ms-2" href="#contact" data-bs-dismiss="modal">Sign Up</a>
             </div>
+          </div>
         </div>
-        <!-- Portfolio item 3 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Finish
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Identity
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      </div>
+    </div>
+
+    <!-- HVAC Modal -->
+    <div class="modal fade" id="modalHVAC" tabindex="-1" aria-hidden="true" aria-labelledby="modalHVACLabel">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="modalHVACLabel">HVAC Filters — Why Replacing on Time Matters</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul class="benefit-list">
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Better airflow:</strong> helps your system breathe and reduces strain.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Cleaner air:</strong> cuts down dust and particles circulating through the home.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Helps efficiency:</strong> clogged filters can make the system work harder.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Fewer breakdown headaches:</strong> staying on schedule reduces preventable issues.</span></li>
+            </ul>
+            <div class="mt-4">
+              <a class="btn btn-primary text-uppercase" href="pricing.html">View Pricing</a>
+              <a class="btn btn-outline-secondary text-uppercase ms-2" href="#contact" data-bs-dismiss="modal">Sign Up</a>
             </div>
+          </div>
         </div>
-        <!-- Portfolio item 4 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Lines
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Branding
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      </div>
+    </div>
+
+    <!-- Kitchen Appliances Modal -->
+    <div class="modal fade" id="modalKitchen" tabindex="-1" aria-hidden="true" aria-labelledby="modalKitchenLabel">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="modalKitchenLabel">Fridge / Kitchen Filters — Why It Matters</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul class="benefit-list">
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Better tasting water & ice:</strong> fresh filters help reduce off-tastes and odors.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Consistent flow:</strong> old filters can slow water dispensing.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Less buildup:</strong> staying current helps reduce sediment load.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>No “oops” moments:</strong> you don’t have to remember the date or model.</span></li>
+            </ul>
+            <div class="mt-4">
+              <a class="btn btn-primary text-uppercase" href="pricing.html">View Pricing</a>
+              <a class="btn btn-outline-secondary text-uppercase ms-2" href="#contact" data-bs-dismiss="modal">Sign Up</a>
             </div>
+          </div>
         </div>
-        <!-- Portfolio item 5 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Southwest
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Website Design
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      </div>
+    </div>
+
+    <!-- Drinking Fountains Modal -->
+    <div class="modal fade" id="modalFountain" tabindex="-1" aria-hidden="true" aria-labelledby="modalFountainLabel">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="modalFountainLabel">Drinking Fountains — Why Timely Filter Changes Matter</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul class="benefit-list">
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Better taste + confidence:</strong> clean filtration helps keep water fresh.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Consistent performance:</strong> reduces clogs and flow issues.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Less downtime:</strong> proactive replacement avoids “it stopped working” problems.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Easy compliance:</strong> if it’s for an office/school, staying on schedule is huge.</span></li>
+            </ul>
+            <div class="mt-4">
+              <a class="btn btn-primary text-uppercase" href="pricing.html">View Pricing</a>
+              <a class="btn btn-outline-secondary text-uppercase ms-2" href="#contact" data-bs-dismiss="modal">Sign Up</a>
             </div>
+          </div>
         </div>
-        <!-- Portfolio item 6 modal popup-->
-        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
-                                <div class="modal-body">
-                                    <!-- Project details-->
-                                    <h2 class="text-uppercase">Project Name</h2>
-                                    <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6.jpg" alt="..." />
-                                    <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                                    <ul class="list-inline">
-                                        <li>
-                                            <strong>Client:</strong>
-                                            Window
-                                        </li>
-                                        <li>
-                                            <strong>Category:</strong>
-                                            Photography
-                                        </li>
-                                    </ul>
-                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
-                                        <i class="fas fa-xmark me-1"></i>
-                                        Close Project
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      </div>
+    </div>
+
+    <!-- Whole House Filters Modal -->
+    <div class="modal fade" id="modalWholeHouse" tabindex="-1" aria-hidden="true" aria-labelledby="modalWholeHouseLabel">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title fw-bold" id="modalWholeHouseLabel">Whole House Filters — Why Replacing on Time Matters</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul class="benefit-list">
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Cleaner water everywhere:</strong> showers, sinks, laundry — all benefit.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Protects fixtures:</strong> reduces sediment that can wear on valves/aerators.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Maintains pressure:</strong> old filters can restrict flow over time.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Peace of mind:</strong> consistent schedule beats guessing.</span></li>
+            </ul>
+            <div class="mt-4">
+              <a class="btn btn-primary text-uppercase" href="pricing.html">View Pricing</a>
+              <a class="btn btn-outline-secondary text-uppercase ms-2" href="#contact" data-bs-dismiss="modal">Sign Up</a>
             </div>
+          </div>
         </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+
+    <!-- SB Forms JS (include ONCE) -->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  </body>
 </html>

@@ -1,219 +1,528 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="Routine Relief Home Services" />
-    <meta name="author" content="Routine Relief Team" />
-    <title>Routine Relief - Pricing</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Routine Relief pricing plans for scheduled filter replacements and water softener pellet refills in Utah County." />
+  <meta name="author" content="Routine Relief Team" />
+  <title>Routine Relief | Pricing</title>
 
-        <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLXDGHD2FV"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-BLXDGHD2FV');
-    </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLXDGHD2FV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BLXDGHD2FV');
+  </script>
 
-    <link rel="icon" type="image/x-icon" href="assets/img/logos/r_logo_orange.svg" />
-    <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
-    <style>
-        .wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 40px 0;
-            gap: 30px;
-            background: #f8f9fa;
-        }
+  <link rel="icon" type="image/x-icon" href="assets/img/logos/r_logo_orange.svg" />
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            width: 250px;
-            transition: transform 0.3s ease;
-        }
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+  <link href="css/styles.css" rel="stylesheet" />
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
 
-        .card.active {
-            border: 2px solid #ffc107;
-        }
+    /* ===== HERO ===== */
+    .pricing-hero {
+      padding-top: 110px; /* offset for fixed navbar */
+      padding-bottom: 40px;
+      background: linear-gradient(180deg, rgba(217,170,0,0.18) 0%, rgba(248,249,250,1) 60%);
+    }
 
-        .card h3 {
-            font-size: 1.5rem;
-            color: #333;
-        }
+    .pricing-hero-card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      padding: 34px 26px;
+    }
 
-        .card h1 {
-            font-size: 2.5rem;
-            color: #007bff;
-        }
+    .pricing-hero h1 {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
 
-        .card span {
-            font-size: 1rem;
-            color: #6c757d;
-        }
+    .pricing-hero p {
+      margin-bottom: 0;
+      color: #495057;
+      font-size: 1.05rem;
+    }
 
-        .card p {
-            font-size: 0.9rem;
-            margin: 10px 0 20px;
-            color: #666;
-        }
+    /* ===== PRICING GRID ===== */
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 24px 0 10px;
+      gap: 22px;
+    }
 
-        .card ul {
-            list-style: none;
-            padding: 0;
-            text-align: left;
-            margin-bottom: 20px;
-        }
+    .plan-card {
+      background: #ffffff;
+      padding: 26px 22px;
+      border-radius: 14px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
+      text-align: left;
+      width: 280px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
 
-        .card ul li {
-            margin: 10px 0;
-            font-size: 0.9rem;
-            color: #333;
-        }
+    .plan-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.10);
+    }
 
-        .card a {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #007bff;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-        }
+    .plan-card .plan-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin: 0 0 6px 0;
+      color: #212529;
+    }
 
-        .card a:hover {
-            background: #0056b3;
-        }
-    </style>
+    .plan-card .plan-forwho {
+      color: #6c757d;
+      margin: 0 0 14px 0;
+      font-size: 0.95rem;
+    }
+
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .plan-price .amount {
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: #0d6efd;
+      line-height: 1;
+    }
+
+    .plan-price .per {
+      color: #6c757d;
+      font-size: 0.95rem;
+    }
+
+    .plan-desc {
+      font-size: 0.95rem;
+      color: #495057;
+      margin: 0 0 14px 0;
+      min-height: 56px;
+    }
+
+    .plan-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 16px 0;
+    }
+
+    .plan-card ul li {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+      font-size: 0.95rem;
+      color: #212529;
+    }
+
+    .plan-card ul li i {
+      color: #d9aa00;
+      margin-top: 3px;
+    }
+
+    .plan-cta {
+      display: inline-block;
+      padding: 12px 14px;
+      background: #0d6efd;
+      color: #ffffff;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      width: 100%;
+      text-align: center;
+    }
+
+    .plan-cta:hover { background: #0b5ed7; color: #ffffff; }
+
+    /* ===== FEATURED PLAN ===== */
+    .plan-card.featured {
+      border: 2px solid rgba(217,170,0,0.75);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+      transform: translateY(-4px);
+    }
+
+    .badge-featured {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: #d9aa00;
+      color: #1f1f1f;
+      font-weight: 900;
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    /* ===== “WHAT’S INCLUDED” ===== */
+    .info-band {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      padding: 22px;
+      margin-top: 24px;
+    }
+
+    .info-band h4 {
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .info-band p {
+      color: #6c757d;
+      margin-bottom: 14px;
+    }
+
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .mini-list li {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+      color: #212529;
+    }
+
+    .mini-list i { color: #d9aa00; margin-top: 3px; }
+
+    /* ===== COMPARISON ===== */
+    .compare-wrap {
+      margin-top: 24px;
+      overflow-x: auto;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+      min-width: 720px;
+    }
+
+    .compare-table th, .compare-table td {
+      padding: 14px 14px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .compare-table th {
+      background: rgba(217,170,0,0.12);
+      font-weight: 900;
+    }
+
+    .compare-table td:first-child, .compare-table th:first-child {
+      text-align: left;
+      font-weight: 700;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-card {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      padding: 22px;
+      margin-top: 24px;
+    }
+
+    .faq-card h3 {
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .faq-item + .faq-item { margin-top: 14px; }
+    .faq-q { font-weight: 800; margin-bottom: 6px; }
+    .faq-a { color: #6c757d; margin-bottom: 0; }
+
+    @media (max-width: 991px) {
+      .pricing-hero { padding-top: 92px; }
+      .plan-card { width: 320px; }
+    }
+  </style>
 </head>
 
 <body id="page-top">
-           <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg fixed-top bg-dark" id="mainNav">>
-            <div class="container">
-                <a class="navbar-brand" href="index.html"><img src="assets/img/logos/r_logo_orange.svg" alt="..." /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href=index.html#services>Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href=pricing.html>Pricing</a></li>
-                        <li class="nav-item"><a class="nav-link" href=benefits.html>Benefits</a></li>
-                        <li class="nav-item"><a class="nav-link" href=index.html#team>Team</a></li>
-                        <li class="nav-item"><a class="nav-link" href=index.html#contact>Sign Up</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
 
-    <!-- Pricing Section -->
-    <!-- Pricing Section -->
-<section class="page-section bg-light" id="pricing">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg fixed-top bg-dark" id="mainNav">
     <div class="container">
-        <div class="text-center">
-            <br><br><h2 class="section-heading text-uppercase">Pricing Plans</h2>
-            <h3 class="section-subheading text-muted">Flexible filter replacement plans to fit every home.</h3>
-        </div>
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/img/logos/r_logo_orange.svg" alt="Routine Relief" style="width: 26px; height: 26px;" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars ms-1"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="benefits.html">Benefits</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#team">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Sign Up</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <div class="wrapper">
-        <!-- Basic Plan -->
-        <div class="card">
-            <h3>Basic</h3>
-            <h1>$19.99 <span>/Month + Pellets</span></h1>
-            <p>Simple water softener pellet replenishment each month. Great for homes that just need the basics.</p>
-            <ul>
-                <li><i class="fa-solid fa-square-check"></i> Monthly pellet refill</li>
-                <li><i class="fa-solid fa-square-check"></i> Reminder notifications</li>
-                <li><i class="fa-solid fa-square-check"></i> No filter changes</li>
-            </ul>
-            <a href="index.html#contact">Choose Plan</a>
-        </div>
-
-        <!-- Plus Plan -->
-        <div class="card">
-            <h3>Plus</h3>
-            <h1>$34.99 <span>/Month + Pellets</span></h1>
-            <p>Includes both water softener pellet refills and HVAC filter replacements.</p>
-            <ul>
-                <li><i class="fa-solid fa-square-check"></i> Monthly pellet refill</li>
-                <li><i class="fa-solid fa-square-check"></i> HVAC filter replacement</li>
-                <li><i class="fa-solid fa-square-check"></i> Quarterly system check</li>
-                <li><i class="fa-solid fa-square-check"></i> Basic customer support</li>
-            </ul>
-            <a href="index.html#contact">Choose Plan</a>
-        </div>
-
-        <!-- Popular Plan -->
-        <div class="card active">
-            <h3>Popular</h3>
-            <h1>$49.99 <span>/Month + Pellets</span></h1>
-            <p>Our most popular option. Covers pellets, HVAC filters, and fridge filters for full-home coverage.</p>
-            <ul>
-                <li><i class="fa-solid fa-square-check"></i> Monthly pellet refill</li>
-                <li><i class="fa-solid fa-square-check"></i> HVAC filter replacement</li>
-                <li><i class="fa-solid fa-square-check"></i> Refrigerator filter replacement</li>
-                <li><i class="fa-solid fa-square-check"></i> Priority service availability</li>
-
-            </ul>
-            <a href="index.html#contact">Choose Plan</a>
-        </div>
-
-        <!-- Custom Plan -->
-        <div class="card">
-            <h3>Custom</h3>
-            <h1>$19.99+ <span>/Month + $15/filter</span></h1>
-            <p>Start with the basic plan, then add the filters you want: HVAC, fridge, drinking fountain, and more.</p>
-            <ul>
-                <li><i class="fa-solid fa-square-check"></i> Monthly pellet refill (included)</li>
-                <li><i class="fa-solid fa-square-check"></i> Add $15 per additional filter type</li>
-                <li><i class="fa-solid fa-square-check"></i> Fully personalized scheduling</li>
-            </ul>
-            <a href="index.html#contact">Choose Plan</a>
-        </div>
+  <!-- HERO -->
+  <header class="pricing-hero">
+    <div class="container">
+      <div class="pricing-hero-card text-center">
+        <h1 class="text-uppercase">Pricing Plans</h1>
+        <p>Simple monthly plans for scheduled filter replacement + water softener pellet refills in Utah County.</p>
+      </div>
     </div>
-</section>
+  </header>
 
+  <!-- PRICING -->
+  <section class="page-section bg-light" id="pricing">
+    <div class="container">
 
-    <!-- Footer-->
-    <footer class="footer py-4">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-4 text-lg-start">© Routine Relief 2025</div>
-                <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-dark btn-social mx-2" href=https://www.facebook.com/profile.php?id=61578854420699 aria-label="Will Hardee Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href=https://www.instagram.com/routine_relief/ aria-label="Will Hardee Instagram Profile"><i class="fab fa-instagram"></i></a>                        
-                </div>
-                <div class="col-lg-4 text-lg-end">
-                    <a class="link-dark text-decoration-none me-3" href="#">Privacy Policy</a>
-                    <a class="link-dark text-decoration-none" href="#">Terms of Use</a>
-                </div>
-            </div>
+      <div class="wrapper">
+        <!-- Basic -->
+        <div class="plan-card">
+          <div class="plan-name">Basic</div>
+          <div class="plan-forwho">Best for: water softener only</div>
+
+          <div class="plan-price">
+            <div class="amount">$19.99</div>
+            <div class="per">/mo + pellets</div>
+          </div>
+
+          <p class="plan-desc">Simple monthly water softener pellet replenishment to keep things running smoothly.</p>
+
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> Monthly pellet refill</li>
+            <li><i class="fa-solid fa-circle-check"></i> Reminder notifications</li>
+            <li><i class="fa-solid fa-circle-check"></i> No filter changes</li>
+          </ul>
+
+          <a class="plan-cta" href="index.html#contact">Choose Basic</a>
         </div>
-    </footer>
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+        <!-- Plus -->
+        <div class="plan-card">
+          <div class="plan-name">Plus</div>
+          <div class="plan-forwho">Best for: homes that want HVAC handled</div>
+
+          <div class="plan-price">
+            <div class="amount">$34.99</div>
+            <div class="per">/mo + pellets</div>
+          </div>
+
+          <p class="plan-desc">Includes pellet refills + HVAC filter replacement for better air and system efficiency.</p>
+
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> Monthly pellet refill</li>
+            <li><i class="fa-solid fa-circle-check"></i> HVAC filter replacement</li>
+            <li><i class="fa-solid fa-circle-check"></i> Quarterly system check</li>
+            <li><i class="fa-solid fa-circle-check"></i> Basic customer support</li>
+          </ul>
+
+          <a class="plan-cta" href="index.html#contact">Choose Plus</a>
+        </div>
+
+        <!-- Popular (Featured) -->
+        <div class="plan-card featured">
+          <div class="badge-featured">BEST VALUE</div>
+
+          <div class="plan-name">Popular</div>
+          <div class="plan-forwho">Best for: full-home essentials</div>
+
+          <div class="plan-price">
+            <div class="amount">$49.99</div>
+            <div class="per">/mo + pellets</div>
+          </div>
+
+          <p class="plan-desc">Our most popular plan: pellets + HVAC + fridge filter replacement.</p>
+
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> Monthly pellet refill</li>
+            <li><i class="fa-solid fa-circle-check"></i> HVAC filter replacement</li>
+            <li><i class="fa-solid fa-circle-check"></i> Refrigerator filter replacement</li>
+            <li><i class="fa-solid fa-circle-check"></i> Priority service availability</li>
+          </ul>
+
+          <a class="plan-cta" href="index.html#contact">Choose Popular</a>
+        </div>
+
+        <!-- Custom -->
+        <div class="plan-card">
+          <div class="plan-name">Custom</div>
+          <div class="plan-forwho">Best for: unique setups / multiple systems</div>
+
+          <div class="plan-price">
+            <div class="amount">$19.99+</div>
+            <div class="per">/mo + $15/filter</div>
+          </div>
+
+          <p class="plan-desc">Start with Basic, then add the filter types you want (HVAC, fridge, whole house, etc.).</p>
+
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> Monthly pellet refill (included)</li>
+            <li><i class="fa-solid fa-circle-check"></i> Add $15 per additional filter type</li>
+            <li><i class="fa-solid fa-circle-check"></i> Fully personalized scheduling</li>
+          </ul>
+
+          <a class="plan-cta" href="index.html#contact">Build Custom</a>
+        </div>
+      </div>
+
+      <!-- WHAT'S INCLUDED / NOT INCLUDED -->
+      <div class="info-band">
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <h4>What’s Included</h4>
+            <p>Everything you need to stay consistent without thinking about it.</p>
+            <ul class="mini-list">
+              <li><i class="fa-solid fa-circle-check"></i> Scheduling + reminders</li>
+              <li><i class="fa-solid fa-circle-check"></i> Standard replacements based on your plan</li>
+              <li><i class="fa-solid fa-circle-check"></i> Quick notes if we spot something off</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <h4>What’s Not Included</h4>
+            <p>So there are no surprises.</p>
+            <ul class="mini-list">
+              <li><i class="fa-solid fa-circle-xmark"></i> Major repairs (we can refer you)</li>
+              <li><i class="fa-solid fa-circle-xmark"></i> Specialty parts outside your plan</li>
+              <li><i class="fa-solid fa-circle-xmark"></i> Emergency service (unless scheduled)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPARISON TABLE -->
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Basic</th>
+              <th>Plus</th>
+              <th>Popular</th>
+              <th>Custom</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Pellet refill scheduling</td>
+              <td><i class="fa-solid fa-check"></i></td>
+              <td><i class="fa-solid fa-check"></i></td>
+              <td><i class="fa-solid fa-check"></i></td>
+              <td><i class="fa-solid fa-check"></i></td>
+            </tr>
+            <tr>
+              <td>HVAC filter replacement</td>
+              <td>—</td>
+              <td><i class="fa-solid fa-check"></i></td>
+              <td><i class="fa-solid fa-check"></i></td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td>Refrigerator filter replacement</td>
+              <td>—</td>
+              <td>—</td>
+              <td><i class="fa-solid fa-check"></i></td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td>Priority scheduling</td>
+              <td>—</td>
+              <td>—</td>
+              <td><i class="fa-solid fa-check"></i></td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td>Plan flexibility</td>
+              <td>Good</td>
+              <td>Good</td>
+              <td>Best</td>
+              <td>Maximum</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-card">
+        <h3 class="text-uppercase">FAQ</h3>
+
+        <div class="faq-item">
+          <div class="faq-q">Do you provide the filters?</div>
+          <p class="faq-a">You can supply your own, or we can bring the correct replacements depending on your plan/setup.</p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Can I cancel anytime?</div>
+          <p class="faq-a">Yes — there are no contracts. Cancel whenever you want.</p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What areas do you serve?</div>
+          <p class="faq-a">Currently focused on Utah County. If you’re nearby, still reach out and we’ll let you know.</p>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What if I’m not sure what filters I need?</div>
+          <p class="faq-a">No problem. Choose “Custom” or “Not sure” when signing up and we’ll help identify the right items.</p>
+        </div>
+
+        <div class="text-center mt-4">
+          <a class="btn btn-primary btn-lg text-uppercase" href="index.html#contact">Sign Up</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer-->
+  <footer class="footer py-4">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-4 text-lg-start">© Routine Relief 2026</div>
+        <div class="col-lg-4 my-3 my-lg-0">
+          <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/profile.php?id=61578854420699" aria-label="Routine Relief Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/routine_relief/" aria-label="Routine Relief Instagram Profile"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a class="link-dark text-decoration-none me-3" href="privacy.html">Privacy Policy</a>
+          <a class="link-dark text-decoration-none" href="terms.html">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/scripts.js"></script>
 </body>
-
 </html>
