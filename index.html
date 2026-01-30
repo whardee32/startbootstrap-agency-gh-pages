@@ -252,6 +252,45 @@
         .hero { padding-top: 92px; }
         .hero-visual { min-height: 240px; }
       }
+
+/* ===== NAVBAR SCROLL BEHAVIOR ===== */
+
+/* Top-of-page state */
+    #mainNav {
+      background-color: transparent !important;
+      transition: background-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    #mainNav .navbar-nav .nav-link {
+      color: #000 !important; /* black links at top */
+      transition: color 0.25s ease;
+    }
+
+/* Scrolled state */
+    #mainNav.navbar-shrink {
+      background-color: #000 !important; /* BLACK BAR */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    #mainNav.navbar-shrink .navbar-nav .nav-link {
+      color: #fff !important; /* white links after scroll */
+    }
+
+    
+    #mainNav .navbar-nav .nav-link {
+      font-weight: 700;          /* make links bold */
+      letter-spacing: 0.05em;    /* slightly spaced for readability */
+      text-transform: uppercase; /* keeps your current style consistent */
+    }
+
+/* Optional: make scrolled state even stronger */
+    #mainNav.navbar-shrink .navbar-nav .nav-link {
+      font-weight: 800;
+    }
+
+    #mainNav .navbar-nav .nav-link:hover {
+      color: #d9aa00 !important; /* your gold accent */
+    }
     </style>
   </head>
 
@@ -274,6 +313,7 @@
             <li class="nav-item"><a class="nav-link" href="benefits.html">Benefits</a></li>
             <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Sign Up</a></li>
+            <li class="nav-item"><a class="nav-link" href="scheduling.html">Schedule Appointment</a></li>
           </ul>
         </div>
       </div>
