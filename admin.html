@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Routine Relief | Admin</title>
+  <link href="css/styles.css" rel="stylesheet" />
+  <style>
+    body{ background:#f8f9fa; padding:22px; font-family:Montserrat, sans-serif; }
+    .top{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:12px; }
+    .card{ background:#fff; border-radius:14px; padding:14px; box-shadow:0 10px 24px rgba(0,0,0,0.06); margin-bottom:12px; }
+    .muted{ color:#6c757d; }
+    .rowx{ display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+    .btnx{ border:1px solid rgba(0,0,0,0.12); background:#fff; padding:8px 10px; border-radius:10px; font-weight:800; cursor:pointer; }
+    .btnx.primary{ background:#d9aa00; border-color:#d9aa00; color:#000; }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; }
+  </style>
+</head>
+<body>
+  <h2 style="font-weight:900; margin:0 0 10px;">Booking Requests</h2>
+
+  <div class="top">
+    <label class="muted" style="font-weight:800;">Status</label>
+    <select id="status">
+      <option value="requested" selected>requested</option>
+      <option value="scheduled">scheduled</option>
+      <option value="cancelled">cancelled</option>
+    </select>
+
+    <button class="btnx" id="refresh">Refresh</button>
+    <span class="muted" id="count"></span>
+    <span class="muted" id="last"></span>
+  </div>
+
+  <div id="list"></div>
+
+  <script>
+    const API_BASE = "http://localhost:3001";
+
+    function esc(s){
+      return String(s ?? "").replace(/[&<>"']/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[m]));
+    }
+
+    async function load(){
+      const status = document.getElementById("status").value;
+      const resp = await fetch(`${API_BASE}/api/admin/requests?status=${encodeURIComponent(status)}`);
+      const data = await resp.json();
+
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+
+      if(!data.ok){
+        list.innerHTML = `<div class="card">Error: ${esc(data.error || "Unknown")}</div>`;
+        return;
+      }
+
+      document.getElementById("count").textContent = `${data.requests.length} results`;
+      document.getElementById("last").textContent = `Last refresh: ${new Date().toLocaleTimeString()}`;
+
+      for(const r of data.requests){
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const addr2 = r.line2 ? `, ${esc(r.line2)}` : "";
+        const notes = r.notes ? esc(r.notes) : "(none)";
+
+        card.innerHTML = `
+          <div class="rowx">
+            <div style="font-weight:900;">#${r.id} • ${esc(r.status)}</div>
+            <div class="muted">${esc(r.created_at)}</div>
+          </div>
+
+          <div style="margin-top:6px;">
+            <div><b>${esc(r.name)}</b> • ${esc(r.phone)} ${r.email ? `• ${esc(r.email)}` : ""}</div>
+            <div class="muted">${esc(r.line1)}${addr2}, ${esc(r.city)}, ${esc(r.state)} ${esc(r.zip)}</div>
+          </div>
+
+          <div style="margin-top:10px;">
+            <div><b>Preferred days:</b> ${esc((r.preferred_dates || []).join(", "))}</div>
+            <div><b>Windows:</b> ${esc((r.preferred_windows || []).join(", "))}</div>
+          </div>
+
+          <div style="margin-top:10px;" class="muted"><b>Notes:</b> ${notes}</div>
+
+          <div style="margin-top:10px;">
+            <button class="btnx" onclick="navigator.clipboard.writeText('${esc(r.phone)}')">Copy Phone</button>
+            <button class="btnx" onclick="navigator.clipboard.writeText('${esc(r.line1)}${addr2}, ${esc(r.city)}, ${esc(r.state)} ${esc(r.zip)}')">Copy Address</button>
+          </div>
+        `;
+        list.appendChild(card);
+      }
+    }
+
+    document.getElementById("refresh").addEventListener("click", load);
+    document.getElementById("status").addEventListener("change", load);
+
+    load();
+    setInterval(load, 5000); // auto-refresh
+  </script>
+</body>
+</html>

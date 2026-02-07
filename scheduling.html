@@ -617,7 +617,6 @@
         const key = chip.dataset.window;
         const input = chip.querySelector("input");
 
-        // prevent default checkbox/label behavior; we control toggling to avoid double-toggle
         input.addEventListener("click", (e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -725,7 +724,7 @@
       $("#summary").innerHTML = html;
     }
 
-    async function submitRequest(){
+    async function submitRequest() {
       const payload = {
         preferences: {
           dates: Array.from(state.selectedDates).sort(),
@@ -736,21 +735,40 @@
         notes: state.notes
       };
 
-      console.log("Booking request payload:", payload);
-      $("#debugOut").textContent = JSON.stringify(payload, null, 2);
+      try {
+        const resp = await fetch("http://localhost:3001/api/booking-request", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
 
-      // Later:
-      // await fetch("/api/booking-request", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify(payload)
-      // });
+        const data = await resp.json();
 
-      $("#step1").classList.add("d-none");
-      $("#step2").classList.add("d-none");
-      $("#step3").classList.add("d-none");
-      $("#success").classList.remove("d-none");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+        if (!resp.ok || !data.ok) {
+          throw new Error(
+            (data.errors && data.errors.join(" ")) ||
+            data.error ||
+            "Submission failed"
+          );
+        }
+
+        // OPTIONAL: keep debug output for now
+        const debug = document.getElementById("debugOut");
+        if (debug) debug.textContent = JSON.stringify({ request_id: data.request_id, ...payload }, null, 2);
+
+        // SUCCESS — show success screen
+        document.getElementById("step1").classList.add("d-none");
+        document.getElementById("step2").classList.add("d-none");
+        document.getElementById("step3").classList.add("d-none");
+        document.getElementById("success").classList.remove("d-none");
+
+        console.log("Request saved with ID:", data.request_id);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+      } catch (err) {
+        console.error(err);
+        showNotice(err.message || "Something went wrong. Please try again.");
+      }
     }
 
     function resetAll(){
@@ -794,9 +812,8 @@
 
     $("#submitBtn").addEventListener("click", async () => {
       $("#submitBtn").disabled = true;
-      try{ await submitRequest(); }
-      catch(e){ console.error(e); showNotice("Something went wrong. Please try again."); }
-      finally{ $("#submitBtn").disabled = false; }
+      try { await submitRequest(); }
+      finally { $("#submitBtn").disabled = false; }
     });
 
     $("#newRequest").addEventListener("click", resetAll);
