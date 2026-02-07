@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="Routine Relief helps Utah County homeowners stay on top of home maintenance with scheduled filter replacements and water softener pellet refills." />
+  <meta name="description" content="Schedule your Routine Relief service by selecting preferred days and time windows, then enter your address and contact info." />
   <meta name="author" content="" />
-  <title>Schedule Appointment | Routine Relief</title>
+  <title>Routine Relief | Scheduling</title>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-BLXDGHD2FV"></script>
@@ -16,154 +16,220 @@
     gtag('config', 'G-BLXDGHD2FV');
   </script>
 
-  <!-- Favicon-->
   <link rel="icon" type="image/x-icon" href="assets/img/logos/r_logo_orange.svg" />
-  <!-- Font Awesome icons (free version)-->
   <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-  <!-- Google fonts-->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
 
   <style>
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 0;
+    body { font-family: 'Montserrat', sans-serif; background-color:#f8f9fa; margin:0; padding:0; }
+    .section-heading { font-weight: 800; }
+    .text-muted { color: #6c757d !important; }
+
+    :root{
+      --gold: #d9aa00;
+      --border: rgba(0,0,0,0.08);
+      --shadow: 0 10px 28px rgba(0,0,0,0.08);
+      --radius: 18px;
+      --radius2: 14px;
     }
 
-    /* Native-feeling scheduling hero */
-    .booking-hero {
+    .divider{
+      border:none; height:4px; width:56px;
+      background-color: var(--gold);
+      margin: 12px auto 18px;
+    }
+
+    .page-section { padding: 3.25rem 0; }
+    @media (max-width: 991px) { .page-section { padding: 2.5rem 0; } }
+
+    /* HERO */
+    .hero{
       background: linear-gradient(180deg, rgba(217,170,0,0.18) 0%, rgba(248,249,250,1) 55%);
-      padding-top: 110px; /* navbar offset */
-      padding-bottom: 60px;
+      padding-top:110px;
+      padding-bottom:22px;
     }
-
-    .booking-card {
-      background: #ffffff;
-      border-radius: 18px;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
-      overflow: hidden;
+    .hero-card{
+      background:#fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
-
-    .booking-inner {
-      padding: 36px 28px;
+    .hero-inner{ padding: 34px; }
+    .hero-eyebrow{
+      display:inline-block;
+      font-weight:800;
+      letter-spacing:0.10em;
+      text-transform:uppercase;
+      font-size:0.80rem;
+      color:#6c757d;
+      margin-bottom:10px;
     }
-
-    .booking-title {
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 10px;
-      text-align: center;
+    .hero h1{
+      font-weight:900;
+      letter-spacing:-0.02em;
+      line-height:1.06;
+      margin-bottom:10px;
     }
+    .hero p.lead{ color:#495057; font-size:1.05rem; margin-bottom:0; }
 
-    .booking-subtitle {
-      color: #495057;
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto 18px;
-      font-size: 1.05rem;
-    }
-
-    .booking-badges {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .booking-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(217,170,0,0.12);
-      color: #212529;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .booking-badge i { color: #d9aa00; }
-
-    .booking-embed {
-      background: #ffffff;
-      border-radius: 14px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    /* Card/Panel */
+    .panel{
+      background:#fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       padding: 18px;
     }
-
-    @media (max-width: 991px) {
-      .booking-hero { padding-top: 92px; }
-      .booking-inner { padding: 26px 18px; }
+    .cardx{
+      background:#fff;
+      border-radius: var(--radius2);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+      padding: 16px;
+      height: 100%;
     }
 
-    /* ===== NAVBAR: black links at top, black bar + white links on scroll ===== */
-    #mainNav {
-      background-color: transparent !important;
-      transition: background-color 0.25s ease, box-shadow 0.25s ease;
+    /* Step pills */
+    .stepper{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:14px;
+    }
+    .step-pill{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      color:#495057;
+      font-size:13px;
+      font-weight:700;
+    }
+    .step-pill .num{
+      width:28px; height:28px;
+      border-radius:999px;
+      display:grid; place-items:center;
+      background: rgba(217,170,0,0.14);
+      color:#212529;
+      font-weight:900;
+    }
+    .step-pill.active{
+      border-color: rgba(217,170,0,0.55);
+      background: rgba(217,170,0,0.10);
+    }
+    .step-pill.done{
+      border-color: rgba(25,135,84,0.35);
+      background: rgba(25,135,84,0.06);
     }
 
-    #mainNav .navbar-nav .nav-link {
-      color: #000 !important;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      transition: color 0.25s ease;
+    /* Date grid */
+    .date-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:10px;
+    }
+    @media (min-width: 576px){ .date-grid{ grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 992px){ .date-grid{ grid-template-columns: repeat(5, 1fr); } }
+
+    .date-btn{
+      width:100%;
+      text-align:left;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background:#fff;
+      padding: 10px 10px;
+      transition: transform .08s ease, border-color .12s ease, background .12s ease;
+    }
+    .date-btn:hover{ transform: translateY(-1px); border-color: rgba(0,0,0,0.18); }
+    .date-btn .dow{
+      font-size:11px; color:#6c757d;
+      letter-spacing:0.35px;
+      text-transform:uppercase;
+      font-weight:800;
+    }
+    .date-btn .md{ font-size:14px; font-weight:900; color:#212529; }
+    .date-btn .tag{ font-size:11px; color:#6c757d; font-weight:700; }
+    .date-btn.selected{
+      border-color: rgba(217,170,0,0.75);
+      background: rgba(217,170,0,0.10);
     }
 
-    #mainNav.navbar-shrink {
-      background-color: #000 !important;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    /* Windows */
+    .chip{
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background:#fff;
+      padding: 12px 12px;
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .08s ease, border-color .12s ease, background .12s ease;
+      height:100%;
+    }
+    .chip:hover{ transform: translateY(-1px); border-color: rgba(0,0,0,0.18); }
+    .chip input{ margin-top:3px; accent-color: var(--gold); }
+    .chip.selected{
+      border-color: rgba(217,170,0,0.75);
+      background: rgba(217,170,0,0.10);
     }
 
-    #mainNav.navbar-shrink .navbar-nav .nav-link {
-      color: #fff !important;
-      font-weight: 800;
+    /* Notices */
+    .notice{
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background:#fff;
+      padding: 12px;
+      color:#495057;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      font-weight:700;
     }
-        /* ===== MOBILE MENU (hamburger + dropdown) ===== */
-    @media (max-width: 991.98px) {
-  /* Make the MENU text + icon black when at top (not scrolled) */
-      #mainNav .navbar-toggler {
-        color: #000 !important;
-        border-color: rgba(0,0,0,0.25) !important;
+    .notice.error{
+      border-color: rgba(220,53,69,0.35);
+      background: rgba(220,53,69,0.06);
+      color:#842029;
+    }
+    .notice.ok{
+      border-color: rgba(25,135,84,0.35);
+      background: rgba(25,135,84,0.06);
+      color:#0f5132;
+    }
+
+    /* Navbar: black links at top, black bar + white links on scroll */
+    #mainNav { background-color: transparent !important; transition: background-color .25s ease, box-shadow .25s ease; }
+    #mainNav .navbar-nav .nav-link { color:#000 !important; font-weight:700; letter-spacing:0.05em; transition: color .25s ease; }
+    #mainNav.navbar-shrink{ background-color:#000 !important; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+    #mainNav.navbar-shrink .navbar-nav .nav-link{ color:#fff !important; font-weight:800; }
+
+    @media (max-width: 991.98px){
+      #mainNav .navbar-toggler{ color:#000 !important; border-color: rgba(0,0,0,0.25) !important; }
+      #mainNav .navbar-toggler-icon{
+        background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
       }
-
-  /* Make the hamburger icon black (Bootstrap uses an SVG background-image) */
-      #mainNav .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+      #mainNav.navbar-shrink .navbar-toggler{ color:#fff !important; border-color: rgba(255,255,255,0.35) !important; }
+      #mainNav.navbar-shrink .navbar-toggler-icon{
+        background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.95%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
       }
-
-  /* When you scroll (black bar), make MENU + icon white */
-      #mainNav.navbar-shrink .navbar-toggler {
-        color: #fff !important;
-        border-color: rgba(255,255,255,0.35) !important;
-      }
-
-      #mainNav.navbar-shrink .navbar-toggler-icon {
-        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255,0.95%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-      }
-
-  /* Optional but recommended: when the mobile menu expands, give it a black dropdown panel */
-      #mainNav #navbarResponsive {
+      #mainNav #navbarResponsive{
         background: rgba(0,0,0,0.92);
         border-radius: 14px;
         padding: 10px 12px;
         margin-top: 10px;
       }
-
-      #mainNav #navbarResponsive .nav-link {
-        color: #fff !important;
-        font-weight: 800;
-      }
+      #mainNav #navbarResponsive .nav-link{ color:#fff !important; font-weight:800; }
     }
   </style>
 </head>
 
 <body id="page-top">
-  <!-- Navigation -->
+
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="index.html#page-top">
@@ -171,8 +237,7 @@
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars ms-1"></i>
+        Menu <i class="fas fa-bars ms-1"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
@@ -187,31 +252,230 @@
     </div>
   </nav>
 
-  <!-- BOOKING -->
-  <header class="booking-hero">
+  <!-- HERO -->
+  <header class="hero">
     <div class="container">
-      <div class="booking-card">
-        <div class="booking-inner">
-          <h1 class="booking-title display-6">Schedule an Appointment</h1>
-          <p class="booking-subtitle">
-            Choose a time that works for you. We’ll confirm details and take care of the service.
-          </p>
+      <div class="hero-card">
+        <div class="hero-inner text-center">
+          <span class="hero-eyebrow">Scheduling</span>
+          <h1 class="display-6">Pick What Works Best</h1>
+          <p class="lead">Choose preferred days + time windows, then add your address and contact info.</p>
 
-          <div class="booking-badges">
-            <span class="booking-badge"><i class="fa-solid fa-clock"></i> Takes ~2 minutes</span>
-            <span class="booking-badge"><i class="fa-solid fa-file-signature"></i> No contracts</span>
-            <span class="booking-badge"><i class="fa-solid fa-calendar-check"></i> Scheduled service</span>
-          </div>
-
-          <div class="booking-embed">
-            <!-- Start Square Appointments Embed Code -->
-            <script src="https://square.site/appointments/buyer/widget/n8ycobqavapcv7/LVE26WV7QPG6M.js"></script>
-            <!-- End Square Appointments Embed Code -->
+          <div class="stepper" id="stepper">
+            <div class="step-pill active" data-step="1"><span class="num">1</span><span>Preferences</span></div>
+            <div class="step-pill" data-step="2"><span class="num">2</span><span>Details</span></div>
+            <div class="step-pill" data-step="3"><span class="num">3</span><span>Review</span></div>
           </div>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- CONTENT -->
+  <section class="page-section bg-light">
+    <div class="container">
+
+      <div id="globalNotice" class="notice d-none mb-3"></div>
+
+      <!-- STEP 1 -->
+      <div id="step1">
+        <div class="row g-3">
+          <div class="col-lg-8">
+            <div class="panel">
+              <h3 class="section-heading mb-1">Preferred days</h3>
+              <p class="text-muted mb-3">Pick 1+ days (more flexibility = faster scheduling). Same-day (today) requests are not available.</p>
+              <div class="date-grid" id="dateGrid"></div>
+
+              <div class="notice mt-3">
+                Tip: If you can, select 2–4 days. It helps us route by area.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="panel">
+              <h3 class="section-heading mb-1">Time window(s)</h3>
+              <p class="text-muted mb-3">Pick 1+ windows. Click anywhere on a window to select it.</p>
+
+              <div class="row g-2" id="windowGrid">
+                <div class="col-12">
+                  <div class="chip w-100" data-window="morning" role="button" tabindex="0" aria-label="Morning 9 AM to 12 PM">
+                    <input type="checkbox" aria-label="Select morning window" />
+                    <div>
+                      <div class="fw-bold">Morning</div>
+                      <div class="text-muted" style="font-size:0.9rem;">9:00 AM – 12:00 PM</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="chip w-100" data-window="afternoon" role="button" tabindex="0" aria-label="Afternoon 12 PM to 4 PM">
+                    <input type="checkbox" aria-label="Select afternoon window" />
+                    <div>
+                      <div class="fw-bold">Afternoon</div>
+                      <div class="text-muted" style="font-size:0.9rem;">12:00 PM – 4:00 PM</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="chip w-100" data-window="evening" role="button" tabindex="0" aria-label="Evening 4 PM to 7 PM">
+                    <input type="checkbox" aria-label="Select evening window" />
+                    <div>
+                      <div class="fw-bold">Evening</div>
+                      <div class="text-muted" style="font-size:0.9rem;">4:00 PM – 7:00 PM</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-end mt-3">
+                <button class="btn btn-primary btn-lg text-uppercase" id="toStep2">Next</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="step2" class="d-none">
+        <div class="row g-3">
+          <div class="col-lg-6">
+            <div class="panel">
+              <h3 class="section-heading mb-1">Contact info</h3>
+              <p class="text-muted mb-3">We’ll use this to confirm your first visit.</p>
+
+              <div class="row g-2">
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Full name</label>
+                  <input class="form-control" id="name" type="text" placeholder="John Smith" autocomplete="name" />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label fw-bold">Phone number</label>
+                  <input class="form-control" id="phone" type="tel" placeholder="801-555-1234" autocomplete="tel" />
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-bold">Email (optional)</label>
+                  <input class="form-control" id="email" type="email" placeholder="you@email.com" autocomplete="email" />
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-bold">Notes (gate code, pets, etc.)</label>
+                  <textarea class="form-control" id="notes" rows="4" placeholder="Anything we should know?"></textarea>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between mt-3">
+                <button class="btn btn-outline-secondary btn-lg text-uppercase" id="backTo1">Back</button>
+                <button class="btn btn-primary btn-lg text-uppercase" id="toStep3">Review</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="panel">
+              <h3 class="section-heading mb-1">Service address</h3>
+              <p class="text-muted mb-3">Where should we come for service?</p>
+
+              <div class="row g-2">
+                <div class="col-12">
+                  <label class="form-label fw-bold">Street address</label>
+                  <input class="form-control" id="addr1" type="text" placeholder="123 N 400 W" autocomplete="address-line1" />
+                </div>
+                <div class="col-12">
+                  <label class="form-label fw-bold">Apt / Unit (optional)</label>
+                  <input class="form-control" id="addr2" type="text" placeholder="Apt 4B" autocomplete="address-line2" />
+                </div>
+                <div class="col-md-5">
+                  <label class="form-label fw-bold">City</label>
+                  <input class="form-control" id="city" type="text" placeholder="Lindon" autocomplete="address-level2" />
+                </div>
+                <div class="col-md-3">
+                  <label class="form-label fw-bold">State</label>
+                  <select class="form-select" id="state" autocomplete="address-level1">
+                    <option value="UT" selected>UT</option>
+                    <option value="ID">ID</option>
+                    <option value="WY">WY</option>
+                    <option value="NV">NV</option>
+                    <option value="CO">CO</option>
+                    <option value="AZ">AZ</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-bold">ZIP</label>
+                  <input class="form-control" id="zip" type="text" inputmode="numeric" placeholder="84042" autocomplete="postal-code" />
+                </div>
+              </div>
+
+              <div class="notice mt-3">
+                We only use this for scheduling and service. No spam.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div id="step3" class="d-none">
+        <div class="row g-3">
+          <div class="col-lg-7">
+            <div class="panel">
+              <h3 class="section-heading mb-1">Review</h3>
+              <p class="text-muted mb-3">This is a request. We’ll confirm the exact day/window by text.</p>
+
+              <div id="summary"></div>
+
+              <div class="d-flex justify-content-between mt-3">
+                <button class="btn btn-outline-secondary btn-lg text-uppercase" id="backTo2">Back</button>
+                <button class="btn btn-primary btn-lg text-uppercase" id="submitBtn">Submit Request</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="panel">
+              <h3 class="section-heading mb-1">What happens next</h3>
+              <p class="text-muted mb-3">We route by area to stay fast and consistent.</p>
+
+              <div class="cardx mb-2">
+                <div class="fw-bold mb-1"><i class="fa-solid fa-route me-2" style="color:var(--gold);"></i>We review your preferences</div>
+                <div class="text-muted">We match your days/windows to the best route.</div>
+              </div>
+
+              <div class="cardx mb-2">
+                <div class="fw-bold mb-1"><i class="fa-solid fa-sms me-2" style="color:var(--gold);"></i>We confirm by text</div>
+                <div class="text-muted">You’ll get a confirmation message with the scheduled day/window.</div>
+              </div>
+
+              <div class="cardx">
+                <div class="fw-bold mb-1"><i class="fa-solid fa-circle-check me-2" style="color:var(--gold);"></i>Service</div>
+                <div class="text-muted">We show up, swap filters / refill pellets, and keep you on schedule.</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div id="success" class="d-none">
+        <div class="panel">
+          <div class="notice ok mb-3">
+            Request received. We’ll confirm your first visit by text soon.
+          </div>
+
+          <div class="cardx">
+            <div class="fw-bold mb-2">Debug (for now)</div>
+            <div class="text-muted mb-2">This will be removed once we connect the backend.</div>
+            <pre id="debugOut" style="white-space:pre-wrap; margin:0; font-size:12px;"></pre>
+          </div>
+
+          <div class="d-flex justify-content-between mt-3">
+            <a class="btn btn-outline-secondary btn-lg text-uppercase" href="index.html#page-top">Back to Home</a>
+            <button class="btn btn-primary btn-lg text-uppercase" id="newRequest">New Request</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="footer py-4">
@@ -230,18 +494,317 @@
     </div>
   </footer>
 
-  <!-- Bootstrap core JS-->
+  <!-- Bootstrap + Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Core theme JS-->
   <script src="js/scripts.js"></script>
 
-  <!-- Ensure navbar-shrink toggles on scroll (fallback) -->
+  <!-- Navbar shrink fallback -->
   <script>
     window.addEventListener("scroll", () => {
       const nav = document.querySelector("#mainNav");
       if (!nav) return;
       nav.classList.toggle("navbar-shrink", window.scrollY > 0);
     });
+  </script>
+
+  <script>
+    // ---------- Helpers ----------
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    function fmtISO(d){
+      const y = d.getFullYear();
+      const m = String(d.getMonth()+1).padStart(2,'0');
+      const day = String(d.getDate()).padStart(2,'0');
+      return `${y}-${m}-${day}`;
+    }
+    function niceDateFromISO(iso){
+      const [y,m,d] = iso.split("-").map(n => Number(n));
+      const dt = new Date(y, m-1, d);
+      return dt.toLocaleDateString(undefined, { weekday:"short", month:"short", day:"numeric" });
+    }
+
+    // ---------- State ----------
+    const state = {
+      selectedDates: new Set(),
+      selectedWindows: new Set(),
+      customer: {},
+      address: {},
+      notes: ""
+    };
+
+    // ---------- UI step control ----------
+    function setStep(step){
+      $("#step1").classList.toggle("d-none", step !== 1);
+      $("#step2").classList.toggle("d-none", step !== 2);
+      $("#step3").classList.toggle("d-none", step !== 3);
+      $("#success").classList.add("d-none");
+
+      $$("#stepper .step-pill").forEach(pill => {
+        const n = Number(pill.dataset.step);
+        pill.classList.toggle("active", n === step);
+        pill.classList.toggle("done", n < step);
+      });
+
+      hideNotice();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showNotice(msg, type="error"){
+      const el = $("#globalNotice");
+      el.textContent = msg;
+      el.classList.remove("d-none", "error", "ok");
+      el.classList.add(type === "ok" ? "ok" : "error");
+    }
+    function hideNotice(){
+      const el = $("#globalNotice");
+      el.classList.add("d-none");
+      el.classList.remove("error","ok");
+      el.textContent = "";
+    }
+
+    // ---------- Build date grid (STARTS TOMORROW) ----------
+    function buildDates(days = 21, startOffset = 1){
+      const grid = $("#dateGrid");
+      grid.innerHTML = "";
+
+      const today = new Date();
+      today.setHours(0,0,0,0);
+
+      for(let i = startOffset; i < startOffset + days; i++){
+        const d = new Date(today);
+        d.setDate(today.getDate() + i);
+        const iso = fmtISO(d);
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "date-btn";
+        btn.dataset.iso = iso;
+
+        const dow = document.createElement("div");
+        dow.className = "dow";
+        dow.textContent = d.toLocaleDateString(undefined, { weekday:"short" });
+
+        const md = document.createElement("div");
+        md.className = "md";
+        md.textContent = d.toLocaleDateString(undefined, { month:"short", day:"numeric" });
+
+        const tag = document.createElement("div");
+        tag.className = "tag";
+        tag.textContent = (i === 1) ? "Tomorrow" : "";
+
+        btn.appendChild(dow);
+        btn.appendChild(md);
+        btn.appendChild(tag);
+
+        btn.addEventListener("click", () => {
+          if(state.selectedDates.has(iso)){
+            state.selectedDates.delete(iso);
+            btn.classList.remove("selected");
+          } else {
+            state.selectedDates.add(iso);
+            btn.classList.add("selected");
+          }
+        });
+
+        grid.appendChild(btn);
+      }
+    }
+
+    // ---------- Window chips (CLICK ANYWHERE) ----------
+    function wireWindows(){
+      $$("#windowGrid .chip").forEach(chip => {
+        const key = chip.dataset.window;
+        const input = chip.querySelector("input");
+
+        // prevent default checkbox/label behavior; we control toggling to avoid double-toggle
+        input.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        });
+
+        function toggle(){
+          const nowChecked = !input.checked;
+          input.checked = nowChecked;
+
+          if(nowChecked){
+            state.selectedWindows.add(key);
+            chip.classList.add("selected");
+          } else {
+            state.selectedWindows.delete(key);
+            chip.classList.remove("selected");
+          }
+        }
+
+        chip.addEventListener("click", toggle);
+        chip.addEventListener("keydown", (e) => {
+          if(e.key === "Enter" || e.key === " "){
+            e.preventDefault();
+            toggle();
+          }
+        });
+      });
+    }
+
+    function validateStep1(){
+      if(state.selectedDates.size === 0){ showNotice("Please select at least 1 preferred day."); return false; }
+      if(state.selectedWindows.size === 0){ showNotice("Please select at least 1 time window."); return false; }
+      return true;
+    }
+
+    function validateStep2(){
+      const name = $("#name").value.trim();
+      const phone = $("#phone").value.trim();
+      const addr1 = $("#addr1").value.trim();
+      const city = $("#city").value.trim();
+      const zip = $("#zip").value.trim();
+
+      if(!name){ showNotice("Please enter your full name."); return false; }
+      if(!phone){ showNotice("Please enter a phone number."); return false; }
+      if(!addr1){ showNotice("Please enter a street address."); return false; }
+      if(!city){ showNotice("Please enter a city."); return false; }
+      if(!zip){ showNotice("Please enter a ZIP code."); return false; }
+
+      state.customer = { name, phone, email: $("#email").value.trim() };
+      state.address = {
+        line1: addr1,
+        line2: $("#addr2").value.trim(),
+        city,
+        state: $("#state").value,
+        zip
+      };
+      state.notes = $("#notes").value.trim();
+      return true;
+    }
+
+    function buildSummary(){
+      const dates = Array.from(state.selectedDates).sort();
+      const windows = Array.from(state.selectedWindows);
+
+      const windowLabel = (w) => ({
+        morning: "Morning (9:00–12:00)",
+        afternoon: "Afternoon (12:00–4:00)",
+        evening: "Evening (4:00–7:00)"
+      }[w] || w);
+
+      const addrLines = [
+        state.address.line1,
+        state.address.line2 || null,
+        `${state.address.city}, ${state.address.state} ${state.address.zip}`
+      ].filter(Boolean);
+
+      const safeNotes = (state.notes || "").replace(/</g,"&lt;");
+
+      const html = `
+        <div class="cardx mb-2">
+          <div class="fw-bold mb-1"><i class="fa-solid fa-calendar-days me-2" style="color:var(--gold);"></i>Preferred days</div>
+          <div class="text-muted">${dates.map(niceDateFromISO).join("<br>")}</div>
+        </div>
+        <div class="cardx mb-2">
+          <div class="fw-bold mb-1"><i class="fa-solid fa-clock me-2" style="color:var(--gold);"></i>Preferred windows</div>
+          <div class="text-muted">${windows.map(windowLabel).join("<br>")}</div>
+        </div>
+        <div class="cardx mb-2">
+          <div class="fw-bold mb-1"><i class="fa-solid fa-user me-2" style="color:var(--gold);"></i>Contact</div>
+          <div class="text-muted">
+            ${state.customer.name}<br>
+            ${state.customer.phone}<br>
+            ${state.customer.email ? state.customer.email : "(email not provided)"}
+          </div>
+        </div>
+        <div class="cardx mb-2">
+          <div class="fw-bold mb-1"><i class="fa-solid fa-location-dot me-2" style="color:var(--gold);"></i>Service address</div>
+          <div class="text-muted">${addrLines.join("<br>")}</div>
+        </div>
+        <div class="cardx">
+          <div class="fw-bold mb-1"><i class="fa-solid fa-note-sticky me-2" style="color:var(--gold);"></i>Notes</div>
+          <div class="text-muted">${safeNotes ? safeNotes : "(none)"}</div>
+        </div>
+      `;
+
+      $("#summary").innerHTML = html;
+    }
+
+    async function submitRequest(){
+      const payload = {
+        preferences: {
+          dates: Array.from(state.selectedDates).sort(),
+          windows: Array.from(state.selectedWindows)
+        },
+        customer: state.customer,
+        address: state.address,
+        notes: state.notes
+      };
+
+      console.log("Booking request payload:", payload);
+      $("#debugOut").textContent = JSON.stringify(payload, null, 2);
+
+      // Later:
+      // await fetch("/api/booking-request", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(payload)
+      // });
+
+      $("#step1").classList.add("d-none");
+      $("#step2").classList.add("d-none");
+      $("#step3").classList.add("d-none");
+      $("#success").classList.remove("d-none");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function resetAll(){
+      state.selectedDates.clear();
+      state.selectedWindows.clear();
+      state.customer = {};
+      state.address = {};
+      state.notes = "";
+
+      $$("#dateGrid .date-btn").forEach(b => b.classList.remove("selected"));
+      $$("#windowGrid .chip").forEach(ch => {
+        ch.classList.remove("selected");
+        const input = ch.querySelector("input");
+        input.checked = false;
+      });
+
+      ["#name","#phone","#email","#notes","#addr1","#addr2","#city","#zip"].forEach(id => $(id).value = "");
+      $("#state").value = "UT";
+
+      hideNotice();
+      setStep(1);
+    }
+
+    // Wire buttons
+    $("#toStep2").addEventListener("click", () => {
+      hideNotice();
+      if(!validateStep1()) return;
+      setStep(2);
+    });
+
+    $("#backTo1").addEventListener("click", () => setStep(1));
+
+    $("#toStep3").addEventListener("click", () => {
+      hideNotice();
+      if(!validateStep2()) return;
+      buildSummary();
+      setStep(3);
+    });
+
+    $("#backTo2").addEventListener("click", () => setStep(2));
+
+    $("#submitBtn").addEventListener("click", async () => {
+      $("#submitBtn").disabled = true;
+      try{ await submitRequest(); }
+      catch(e){ console.error(e); showNotice("Something went wrong. Please try again."); }
+      finally{ $("#submitBtn").disabled = false; }
+    });
+
+    $("#newRequest").addEventListener("click", resetAll);
+
+    // Init
+    buildDates(21, 1); // 21 days starting tomorrow (today not available)
+    wireWindows();
+    setStep(1);
   </script>
 </body>
 </html>
