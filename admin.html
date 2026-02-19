@@ -13,29 +13,54 @@
     .rowx{ display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; }
     .btnx{ border:1px solid rgba(0,0,0,0.12); background:#fff; padding:8px 10px; border-radius:10px; font-weight:800; cursor:pointer; }
     .btnx.primary{ background:#d9aa00; border-color:#d9aa00; color:#000; }
-    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12px; }
+    .btnx.danger{ border-color: rgba(220,53,69,0.35); background: rgba(220,53,69,0.06); }
+    .pill{ display:inline-block; padding:6px 10px; border-radius:999px; background:#fff; border:1px solid rgba(0,0,0,0.10); font-weight:800; }
+    .hidden{ display:none; }
+    input[type="password"]{ padding:10px; border-radius:10px; border:1px solid rgba(0,0,0,0.18); width: 320px; max-width: 100%; }
   </style>
 </head>
 <body>
   <h2 style="font-weight:900; margin:0 0 10px;">Booking Requests</h2>
 
-  <div class="top">
-    <label class="muted" style="font-weight:800;">Status</label>
-    <select id="status">
-      <option value="requested" selected>requested</option>
-      <option value="scheduled">scheduled</option>
-      <option value="cancelled">cancelled</option>
-    </select>
-
-    <button class="btnx" id="refresh">Refresh</button>
-    <span class="muted" id="count"></span>
-    <span class="muted" id="last"></span>
+  <div id="authCard" class="card">
+    <div style="font-weight:900; margin-bottom:6px;">Admin login</div>
+    <div class="muted" style="margin-bottom:10px;">Enter your admin key to view requests.</div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+      <input id="adminKey" type="password" placeholder="Admin key" autocomplete="current-password" />
+      <button class="btnx primary" id="loginBtn">Log in</button>
+      <span class="muted" id="authMsg"></span>
+    </div>
   </div>
 
-  <div id="list"></div>
+  <div id="app" class="hidden">
+    <div class="top">
+      <span class="pill" id="envPill"></span>
+
+      <label class="muted" style="font-weight:800;">Status</label>
+      <select id="status">
+        <option value="requested" selected>requested</option>
+        <option value="scheduled">scheduled</option>
+        <option value="cancelled">cancelled</option>
+      </select>
+
+      <button class="btnx" id="refresh">Refresh</button>
+      <button class="btnx danger" id="logout">Log out</button>
+
+      <span class="muted" id="count"></span>
+      <span class="muted" id="last"></span>
+    </div>
+
+    <div id="list"></div>
+  </div>
 
   <script>
-    const API_BASE = "http://localhost:3001";
+    // ===== API BASE (local vs production) =====
+    const IS_LOCAL = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+    const API_BASE = IS_LOCAL
+      ? "http://localhost:3001"
+      : "https://YOUR-RENDER-APP.onrender.com"; // <-- replace once deployed
+
+    const ENV_LABEL = IS_LOCAL ? "LOCAL" : "LIVE";
 
     function esc(s){
       return String(s ?? "").replace(/[&<>"']/g, m => ({
@@ -43,61 +68,135 @@
       }[m]));
     }
 
-    async function load(){
-      const status = document.getElementById("status").value;
-      const resp = await fetch(`${API_BASE}/api/admin/requests?status=${encodeURIComponent(status)}`);
-      const data = await resp.json();
+    function getKey(){
+      return sessionStorage.getItem("RR_ADMIN_KEY") || "";
+    }
+    function setKey(k){
+      sessionStorage.setItem("RR_ADMIN_KEY", k);
+    }
+    function clearKey(){
+      sessionStorage.removeItem("RR_ADMIN_KEY");
+    }
 
+    async function tryLoad(){
+      const key = getKey();
+      if(!key) throw new Error("Missing key");
+
+      const status = document.getElementById("status").value;
+      const resp = await fetch(`${API_BASE}/api/admin/requests?status=${encodeURIComponent(status)}`, {
+        headers: { "x-admin-key": key }
+      });
+
+      const data = await resp.json().catch(() => ({}));
+
+      if(resp.status === 401){
+        throw new Error("Unauthorized (wrong admin key)");
+      }
+      if(!resp.ok || !data.ok){
+        throw new Error(data.error || "Failed to load");
+      }
+      return data;
+    }
+
+    async function load(){
       const list = document.getElementById("list");
       list.innerHTML = "";
 
-      if(!data.ok){
-        list.innerHTML = `<div class="card">Error: ${esc(data.error || "Unknown")}</div>`;
-        return;
-      }
+      try {
+        const data = await tryLoad();
 
-      document.getElementById("count").textContent = `${data.requests.length} results`;
-      document.getElementById("last").textContent = `Last refresh: ${new Date().toLocaleTimeString()}`;
+        document.getElementById("count").textContent = `${data.requests.length} results`;
+        document.getElementById("last").textContent = `Last refresh: ${new Date().toLocaleTimeString()}`;
 
-      for(const r of data.requests){
-        const card = document.createElement("div");
-        card.className = "card";
+        for(const r of data.requests){
+          const card = document.createElement("div");
+          card.className = "card";
 
-        const addr2 = r.line2 ? `, ${esc(r.line2)}` : "";
-        const notes = r.notes ? esc(r.notes) : "(none)";
+          const addr2 = r.line2 ? `, ${esc(r.line2)}` : "";
+          const notes = r.notes ? esc(r.notes) : "(none)";
 
-        card.innerHTML = `
-          <div class="rowx">
-            <div style="font-weight:900;">#${r.id} • ${esc(r.status)}</div>
-            <div class="muted">${esc(r.created_at)}</div>
-          </div>
+          const dates = Array.isArray(r.preferred_dates) ? r.preferred_dates : [];
+          const wins  = Array.isArray(r.preferred_windows) ? r.preferred_windows : [];
 
-          <div style="margin-top:6px;">
-            <div><b>${esc(r.name)}</b> • ${esc(r.phone)} ${r.email ? `• ${esc(r.email)}` : ""}</div>
-            <div class="muted">${esc(r.line1)}${addr2}, ${esc(r.city)}, ${esc(r.state)} ${esc(r.zip)}</div>
-          </div>
+          card.innerHTML = `
+            <div class="rowx">
+              <div style="font-weight:900;">#${esc(r.id)} • ${esc(r.status)}</div>
+              <div class="muted">${esc(r.created_at)}</div>
+            </div>
 
-          <div style="margin-top:10px;">
-            <div><b>Preferred days:</b> ${esc((r.preferred_dates || []).join(", "))}</div>
-            <div><b>Windows:</b> ${esc((r.preferred_windows || []).join(", "))}</div>
-          </div>
+            <div style="margin-top:6px;">
+              <div><b>${esc(r.name)}</b> • ${esc(r.phone)} ${r.email ? `• ${esc(r.email)}` : ""}</div>
+              <div class="muted">${esc(r.line1)}${addr2}, ${esc(r.city)}, ${esc(r.state)} ${esc(r.zip)}</div>
+            </div>
 
-          <div style="margin-top:10px;" class="muted"><b>Notes:</b> ${notes}</div>
+            <div style="margin-top:10px;">
+              <div><b>Preferred days:</b> ${esc(dates.join(", "))}</div>
+              <div><b>Windows:</b> ${esc(wins.join(", "))}</div>
+            </div>
 
-          <div style="margin-top:10px;">
-            <button class="btnx" onclick="navigator.clipboard.writeText('${esc(r.phone)}')">Copy Phone</button>
-            <button class="btnx" onclick="navigator.clipboard.writeText('${esc(r.line1)}${addr2}, ${esc(r.city)}, ${esc(r.state)} ${esc(r.zip)}')">Copy Address</button>
-          </div>
-        `;
-        list.appendChild(card);
+            <div style="margin-top:10px;" class="muted"><b>Notes:</b> ${notes}</div>
+
+            <div style="margin-top:10px;">
+              <button class="btnx" onclick="navigator.clipboard.writeText('${esc(r.phone)}')">Copy Phone</button>
+              <button class="btnx" onclick="navigator.clipboard.writeText('${esc(r.line1)}${addr2}, ${esc(r.city)}, ${esc(r.state)} ${esc(r.zip)}')">Copy Address</button>
+            </div>
+          `;
+          list.appendChild(card);
+        }
+      } catch (e) {
+        list.innerHTML = `<div class="card">Error: ${esc(e.message || "Unknown")}</div>`;
+        if(String(e.message || "").toLowerCase().includes("unauthorized")){
+          clearKey();
+          showAuth("Wrong key. Try again.");
+        }
       }
     }
+
+    function showAuth(msg=""){
+      document.getElementById("authCard").classList.remove("hidden");
+      document.getElementById("app").classList.add("hidden");
+      document.getElementById("authMsg").textContent = msg;
+      document.getElementById("adminKey").value = "";
+      document.getElementById("adminKey").focus();
+    }
+
+    function showApp(){
+      document.getElementById("authCard").classList.add("hidden");
+      document.getElementById("app").classList.remove("hidden");
+      document.getElementById("envPill").textContent = `ENV: ${ENV_LABEL}`;
+    }
+
+    document.getElementById("loginBtn").addEventListener("click", async () => {
+      const k = document.getElementById("adminKey").value.trim();
+      if(!k){
+        document.getElementById("authMsg").textContent = "Enter a key.";
+        return;
+      }
+      setKey(k);
+      showApp();
+      await load();
+    });
+
+    document.getElementById("adminKey").addEventListener("keydown", (e) => {
+      if(e.key === "Enter") document.getElementById("loginBtn").click();
+    });
 
     document.getElementById("refresh").addEventListener("click", load);
     document.getElementById("status").addEventListener("change", load);
 
-    load();
-    setInterval(load, 5000); // auto-refresh
+    document.getElementById("logout").addEventListener("click", () => {
+      clearKey();
+      showAuth("Logged out.");
+    });
+
+    // Boot
+    if(getKey()){
+      showApp();
+      load();
+      setInterval(load, 5000);
+    } else {
+      showAuth("");
+    }
   </script>
 </body>
 </html>

@@ -463,7 +463,7 @@
 
           <div class="cardx">
             <div class="fw-bold mb-2">Debug (for now)</div>
-            <div class="text-muted mb-2">This will be removed once we connect the backend.</div>
+            <div class="text-muted mb-2">This will be removed later.</div>
             <pre id="debugOut" style="white-space:pre-wrap; margin:0; font-size:12px;"></pre>
           </div>
 
@@ -508,6 +508,12 @@
   </script>
 
   <script>
+    // ===== API BASE (local vs production) =====
+    const IS_LOCAL = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+    const API_BASE = IS_LOCAL
+      ? "http://localhost:3001"
+      : "https://YOUR-RENDER-APP.onrender.com"; // <-- replace this once Render is deployed
+
     // ---------- Helpers ----------
     const $ = (sel) => document.querySelector(sel);
     const $$ = (sel) => Array.from(document.querySelectorAll(sel));
@@ -736,7 +742,7 @@
       };
 
       try {
-        const resp = await fetch("http://localhost:3001/api/booking-request", {
+        const resp = await fetch(`${API_BASE}/api/booking-request`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
@@ -752,7 +758,7 @@
           );
         }
 
-        // OPTIONAL: keep debug output for now
+        // OPTIONAL debug output
         const debug = document.getElementById("debugOut");
         if (debug) debug.textContent = JSON.stringify({ request_id: data.request_id, ...payload }, null, 2);
 
