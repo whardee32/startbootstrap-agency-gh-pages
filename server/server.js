@@ -1,6 +1,5 @@
 console.log("RUNNING THE NEW POSTGRES SERVER.JS ✅");
 
-
 require("dotenv").config();
 
 const express = require("express");
@@ -13,15 +12,46 @@ const PORT = process.env.PORT || 3001;
 /* ======================
    DATABASE (Supabase)
 ====================== */
+if (!process.env.DATABASE_URL) {
+  console.warn("⚠️ DATABASE_URL is missing. The API will not be able to connect to Postgres.");
+}
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  // Supabase + hosted Postgres typically requires SSL in production
   ssl: { rejectUnauthorized: false },
 });
 
 /* ======================
    MIDDLEWARE
 ====================== */
-app.use(cors()); // OK for dev; restrict in prod
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "http://127.0.0.1:3000",
+  "http://127.0.0.1:3001",
+  // add your real domains here:
+  "https://routinerelief.com",
+  "https://www.routinerelief.com",
+  // if you use GitHub pages, add the exact origin:
+  // "https://whardee32.github.io"
+];
+
+app.use(
+  cors({
+    origin: (origin, cb) => {
+      // allow curl/postman/no-origin requests
+      if (!origin) return cb(null, true);
+
+      // allow list
+      if (allowedOrigins.includes(origin)) return cb(null, true);
+
+      // if you want fully-open CORS, replace this whole cors() block with: app.use(cors());
+      return cb(new Error(`CORS blocked for origin: ${origin}`));
+    },
+  })
+);
+
 app.use(express.json({ limit: "200kb" }));
 
 /* ======================
@@ -35,7 +65,7 @@ function isValidISODate(iso) {
   return /^\d{4}-\d{2}-\d{2}$/.test(iso);
 }
 
-function validate(body) {
+function validateBooking(body) {
   const errors = [];
 
   const dates = body?.preferences?.dates;
@@ -83,12 +113,20 @@ function validate(body) {
   return {
     errors,
     cleaned: {
-      preferences: { dates, windows },
+      preferences: { dates: dates || [], windows: windows || [] },
       customer: { name, phone, email },
       address: { line1, line2, city, state, zip },
       notes,
     },
   };
+}
+
+function requireAdmin(req, res, next) {
+  const key = req.headers["x-admin-key"];
+  if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
+    return res.status(401).json({ ok: false, error: "Unauthorized" });
+  }
+  next();
 }
 
 /* ======================
@@ -101,14 +139,14 @@ app.get("/api/health", async (req, res) => {
     const r = await pool.query("select now() as now");
     res.json({ ok: true, now: r.rows[0].now });
   } catch (e) {
-    console.error(e);
+    console.error("Health check failed:", e);
     res.status(500).json({ ok: false, error: e.message });
   }
 });
 
 /* Create booking request */
 app.post("/api/booking-request", async (req, res) => {
-  const { errors, cleaned } = validate(req.body);
+  const { errors, cleaned } = validateBooking(req.body);
   if (errors.length) {
     return res.status(400).json({ ok: false, errors });
   }
@@ -136,8 +174,9 @@ app.post("/api/booking-request", async (req, res) => {
       RETURNING id
       `,
       [
-        JSON.stringify(preferences.dates),
-        JSON.stringify(preferences.windows),
+        // since the columns are jsonb, you can pass arrays directly
+        preferences.dates,
+        preferences.windows,
         customer.name,
         customer.phone,
         customer.email,
@@ -152,7 +191,7 @@ app.post("/api/booking-request", async (req, res) => {
 
     res.json({ ok: true, request_id: result.rows[0].id });
   } catch (err) {
-    console.error(err);
+    console.error("Insert failed:", err);
     res.status(500).json({
       ok: false,
       error: err.message || "Database insert failed",
@@ -160,18 +199,9 @@ app.post("/api/booking-request", async (req, res) => {
   }
 });
 
-/* Admin auth */
-function requireAdmin(req, res, next) {
-  const key = req.headers["x-admin-key"];
-  if (!process.env.ADMIN_KEY || key !== process.env.ADMIN_KEY) {
-    return res.status(401).json({ ok: false, error: "Unauthorized" });
-  }
-  next();
-}
-
 /* Admin list */
 app.get("/api/admin/requests", requireAdmin, async (req, res) => {
-  const status = (req.query.status || "requested").trim();
+  const status = String(req.query.status || "requested").trim();
 
   try {
     const r = await pool.query(
@@ -187,10 +217,43 @@ app.get("/api/admin/requests", requireAdmin, async (req, res) => {
 
     res.json({ ok: true, requests: r.rows });
   } catch (err) {
-    console.error(err);
+    console.error("Admin read failed:", err);
     res.status(500).json({
       ok: false,
       error: err.message || "Database read failed",
+    });
+  }
+});
+
+/* Admin update status */
+app.patch("/api/admin/requests/:id", requireAdmin, async (req, res) => {
+  const id = req.params.id;
+  const status = String(req.body?.status || "").trim();
+
+  const allowed = new Set(["requested", "scheduled", "cancelled"]);
+  if (!allowed.has(status)) {
+    return res.status(400).json({
+      ok: false,
+      error: "Invalid status. Use: requested | scheduled | cancelled",
+    });
+  }
+
+  try {
+    const r = await pool.query(
+      `UPDATE booking_requests SET status = $1 WHERE id = $2 RETURNING id`,
+      [status, id]
+    );
+
+    if (!r.rowCount) {
+      return res.status(404).json({ ok: false, error: "Not found" });
+    }
+
+    res.json({ ok: true });
+  } catch (err) {
+    console.error("Admin update failed:", err);
+    res.status(500).json({
+      ok: false,
+      error: err.message || "Database update failed",
     });
   }
 });
@@ -199,5 +262,5 @@ app.get("/api/admin/requests", requireAdmin, async (req, res) => {
    START SERVER
 ====================== */
 app.listen(PORT, () => {
-  console.log(`API running: http://localhost:${PORT}`);
+  console.log(`API running on port ${PORT}`);
 });
