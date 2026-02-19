@@ -742,7 +742,7 @@
       };
 
       try {
-        const resp = await fetch(`${API_BASE}/api/booking-request`, {
+        const resp = await fetch(`https://routine-relief-api.onrender.com/api/booking-request`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
