@@ -13,7 +13,9 @@ const PORT = process.env.PORT || 3001;
    DATABASE (Supabase)
 ====================== */
 if (!process.env.DATABASE_URL) {
-  console.warn("⚠️ DATABASE_URL is missing. The API will not be able to connect to Postgres.");
+  console.warn(
+    "⚠️ DATABASE_URL is missing. The API will not be able to connect to Postgres."
+  );
 }
 
 const pool = new Pool({
@@ -30,10 +32,9 @@ const allowedOrigins = [
   "http://localhost:3001",
   "http://127.0.0.1:3000",
   "http://127.0.0.1:3001",
-  // add your real domains here:
   "https://routinerelief.com",
   "https://www.routinerelief.com",
-  // if you use GitHub pages, add the exact origin:
+  // If you use GitHub pages, add the exact origin:
   // "https://whardee32.github.io"
 ];
 
@@ -43,10 +44,8 @@ app.use(
       // allow curl/postman/no-origin requests
       if (!origin) return cb(null, true);
 
-      // allow list
       if (allowedOrigins.includes(origin)) return cb(null, true);
 
-      // if you want fully-open CORS, replace this whole cors() block with: app.use(cors());
       return cb(new Error(`CORS blocked for origin: ${origin}`));
     },
   })
@@ -170,13 +169,13 @@ app.post("/api/booking-request", async (req, res) => {
         zip,
         notes
       )
-      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
+      VALUES ($1::jsonb,$2::jsonb,$3,$4,$5,$6,$7,$8,$9,$10,$11)
       RETURNING id
       `,
       [
-        // since the columns are jsonb, you can pass arrays directly
-        preferences.dates,
-        preferences.windows,
+        // store arrays as jsonb
+        JSON.stringify(preferences.dates),
+        JSON.stringify(preferences.windows),
         customer.name,
         customer.phone,
         customer.email,
@@ -189,10 +188,10 @@ app.post("/api/booking-request", async (req, res) => {
       ]
     );
 
-    res.json({ ok: true, request_id: result.rows[0].id });
+    return res.json({ ok: true, request_id: result.rows[0].id });
   } catch (err) {
     console.error("Insert failed:", err);
-    res.status(500).json({
+    return res.status(500).json({
       ok: false,
       error: err.message || "Database insert failed",
     });
@@ -215,10 +214,10 @@ app.get("/api/admin/requests", requireAdmin, async (req, res) => {
       [status]
     );
 
-    res.json({ ok: true, requests: r.rows });
+    return res.json({ ok: true, requests: r.rows });
   } catch (err) {
     console.error("Admin read failed:", err);
-    res.status(500).json({
+    return res.status(500).json({
       ok: false,
       error: err.message || "Database read failed",
     });
@@ -248,10 +247,10 @@ app.patch("/api/admin/requests/:id", requireAdmin, async (req, res) => {
       return res.status(404).json({ ok: false, error: "Not found" });
     }
 
-    res.json({ ok: true });
+    return res.json({ ok: true });
   } catch (err) {
     console.error("Admin update failed:", err);
-    res.status(500).json({
+    return res.status(500).json({
       ok: false,
       error: err.message || "Database update failed",
     });
