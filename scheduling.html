@@ -510,9 +510,10 @@
   <script>
     // ===== API BASE (local vs production) =====
     const IS_LOCAL = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+
     const API_BASE = IS_LOCAL
       ? "http://localhost:3001"
-      : "https://YOUR-RENDER-APP.onrender.com"; // <-- replace this once Render is deployed
+      : "https://routine-relief-api.onrender.com";
 
     // ---------- Helpers ----------
     const $ = (sel) => document.querySelector(sel);
@@ -731,6 +732,8 @@
     }
 
     async function submitRequest() {
+      console.log("Submitting booking request to:", `${API_BASE}/api/booking-request`);
+
       const payload = {
         preferences: {
           dates: Array.from(state.selectedDates).sort(),
@@ -742,7 +745,7 @@
       };
 
       try {
-        const resp = await fetch(`https://routine-relief-api.onrender.com/api/booking-request`, {
+        const resp = await fetch(`${API_BASE}/api/booking-request`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload)
@@ -760,7 +763,13 @@
 
         // OPTIONAL debug output
         const debug = document.getElementById("debugOut");
-        if (debug) debug.textContent = JSON.stringify({ request_id: data.request_id, ...payload }, null, 2);
+        if (debug) {
+          debug.textContent = JSON.stringify(
+            { request_id: data.request_id, ...payload },
+            null,
+            2
+          );
+        }
 
         // SUCCESS — show success screen
         document.getElementById("step1").classList.add("d-none");
