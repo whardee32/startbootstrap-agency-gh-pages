@@ -1,4 +1,4 @@
-console.log("RUNNING THE NEW POSTGRES SERVER.JS ✅");
+console.log("Starting Routine Relief scheduling API");
 
 require("dotenv").config();
 
@@ -20,9 +20,15 @@ if (!process.env.DATABASE_URL) {
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  connectionTimeoutMillis: 5000,
+  idleTimeoutMillis: 30000,
+  query_timeout: 8000,
+  statement_timeout: 8000,
+  max: 5,
   // Supabase + hosted Postgres typically requires SSL in production
   ssl: { rejectUnauthorized: false },
 });
+pool.on("error", () => console.error("Unexpected idle database connection error"));
 
 /* ======================
    MIDDLEWARE
@@ -61,7 +67,9 @@ function normalizePhone(phone) {
 }
 
 function isValidISODate(iso) {
-  return /^\d{4}-\d{2}-\d{2}$/.test(iso);
+  if (typeof iso !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return false;
+  const d = new Date(iso + "T00:00:00Z");
+  return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === iso;
 }
 
 function validateBooking(body) {
@@ -91,23 +99,28 @@ function validateBooking(body) {
     }
   }
 
-  const name = (body?.customer?.name || "").trim();
+  const name = String(body?.customer?.name || "").trim();
   const phone = normalizePhone(body?.customer?.phone || "");
-  const email = (body?.customer?.email || "").trim() || null;
+  const email = String(body?.customer?.email || "").trim() || null;
 
-  const line1 = (body?.address?.line1 || "").trim();
-  const line2 = (body?.address?.line2 || "").trim() || null;
-  const city = (body?.address?.city || "").trim();
-  const state = (body?.address?.state || "").trim() || "UT";
-  const zip = (body?.address?.zip || "").trim();
+  const line1 = String(body?.address?.line1 || "").trim();
+  const line2 = String(body?.address?.line2 || "").trim() || null;
+  const city = String(body?.address?.city || "").trim();
+  const state = String(body?.address?.state || "").trim() || "UT";
+  const zip = String(body?.address?.zip || "").trim();
 
-  const notes = (body?.notes || "").trim() || null;
+  const notes = String(body?.notes || "").trim() || null;
 
   if (!name) errors.push("Name is required.");
-  if (!phone) errors.push("Phone is required.");
+  if (!/^(?:1)?\d{10}$/.test(phone)) errors.push("Enter a valid 10-digit phone number.");
+  if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) errors.push("Enter a valid email address.");
   if (!line1) errors.push("Street address is required.");
   if (!city) errors.push("City is required.");
-  if (!zip) errors.push("ZIP is required.");
+  if (!/^\d{5}(?:-\d{4})?$/.test(zip)) errors.push("Enter a valid ZIP code.");
+  if (state !== "UT") errors.push("Service is currently available in Utah only.");
+  if (name.length > 100 || line1.length > 200 || city.length > 100 || notes?.length > 2000) errors.push("Some fields are too long.");
+  if (Array.isArray(dates) && dates.length > 21) errors.push("Choose no more than 21 preferred days.");
+  if (Array.isArray(windows) && windows.length > 3) errors.push("Choose no more than 3 time windows.");
 
   return {
     errors,
@@ -132,14 +145,17 @@ function requireAdmin(req, res, next) {
    ROUTES
 ====================== */
 
+/* Lightweight liveness check; readiness below includes the database. */
+app.get("/healthz", (req, res) => res.json({ ok: true }));
+
 /* Health check */
 app.get("/api/health", async (req, res) => {
   try {
     const r = await pool.query("select now() as now");
     res.json({ ok: true, now: r.rows[0].now });
   } catch (e) {
-    console.error("Health check failed:", e);
-    res.status(500).json({ ok: false, error: e.message });
+    console.error("Database readiness check failed:", e.code || e.name);
+    res.status(503).json({ ok: false, error: "Scheduling is temporarily unavailable. Please email routinereliefsystems@gmail.com." });
   }
 });
 
@@ -190,10 +206,10 @@ app.post("/api/booking-request", async (req, res) => {
 
     return res.json({ ok: true, request_id: result.rows[0].id });
   } catch (err) {
-    console.error("Insert failed:", err);
+    console.error("Booking insert failed:", err.code || err.name);
     return res.status(500).json({
       ok: false,
-      error: err.message || "Database insert failed",
+      error: "We could not save this request. Please email routinereliefsystems@gmail.com.",
     });
   }
 });
@@ -216,10 +232,10 @@ app.get("/api/admin/requests", requireAdmin, async (req, res) => {
 
     return res.json({ ok: true, requests: r.rows });
   } catch (err) {
-    console.error("Admin read failed:", err);
+    console.error("Admin read failed:", err.code || err.name);
     return res.status(500).json({
       ok: false,
-      error: err.message || "Database read failed",
+      error: "Database request failed",
     });
   }
 });
@@ -249,10 +265,10 @@ app.patch("/api/admin/requests/:id", requireAdmin, async (req, res) => {
 
     return res.json({ ok: true });
   } catch (err) {
-    console.error("Admin update failed:", err);
+    console.error("Admin update failed:", err.code || err.name);
     return res.status(500).json({
       ok: false,
-      error: err.message || "Database update failed",
+      error: "Database update failed",
     });
   }
 });
@@ -260,6 +276,6 @@ app.patch("/api/admin/requests/:id", requireAdmin, async (req, res) => {
 /* ======================
    START SERVER
 ====================== */
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`API running on port ${PORT}`);
 });
