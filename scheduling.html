@@ -225,42 +225,21 @@
       #mainNav #navbarResponsive .nav-link{ color:#fff !important; font-weight:800; }
     }
   </style>
-</head>
+<link href="css/relief.css" rel="stylesheet"></head>
 
-<body id="page-top">
+<body id="page-top" class="rr-scheduling">
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="index.html#page-top">
-        <img src="assets/img/logos/r_logo_orange.svg" alt="Routine Relief" class="logo-img" />
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu <i class="fas fa-bars ms-1"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-          <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="benefits.html">Benefits</a></li>
-          <li class="nav-item"><a class="nav-link" href="property-managers.html">Property Managers</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#team">Team</a></li>
-          <li class="nav-item"><a class="nav-link" href="index.html#contact">Sign Up</a></li>
-          <li class="nav-item"><a class="nav-link" href="scheduling.html">Schedule Appointment</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <a class="skip" href="#main">Skip to content</a><header class="rr-nav"><div class="wrap rr-nav-inner"><a class="brand" href="index.html"><img src="assets/img/logos/r_logo_orange.svg" alt="" width="40" height="34"><span>ROUTINE RELIEF<small>HOME MAINTENANCE, HANDLED</small></span></a><button type="button" class="rr-menu" id="rr-menu" aria-expanded="false" aria-controls="rr-links">Menu</button><nav class="rr-links" id="rr-links" aria-label="Main navigation"><a href="index.html" aria-current="page">Home</a><a href="pricing.html">Pricing</a><a href="benefits.html">Benefits</a><a href="property-managers.html">Property Managers</a><a href="scheduling.html" aria-current="page">Request a visit</a><a class="btn" href="index.html#contact">Get service details ↗</a></nav></div></header>
 
-  <!-- HERO -->
+  <main id="main"><!-- HERO -->
   <header class="hero">
     <div class="container">
       <div class="hero-card">
         <div class="hero-inner text-center">
           <span class="hero-eyebrow">Scheduling</span>
-          <h1 class="display-6">Pick What Works Best</h1>
-          <p class="lead">Choose preferred days + time windows, then add your address and contact info.</p>
+          <h1 class="display-6">Request your next visit</h1>
+          <p class="lead">Share preferred days and time windows. We confirm availability separately; this is not an instant booking.</p>
 
           <div class="stepper" id="stepper">
             <div class="step-pill active" data-step="1"><span class="num">1</span><span>Preferences</span></div>
@@ -276,7 +255,7 @@
   <section class="page-section bg-light">
     <div class="container">
 
-      <div id="globalNotice" class="notice d-none mb-3"></div>
+      <div id="globalNotice" class="notice d-none mb-3" role="alert" tabindex="-1"></div><div class="panel mb-4"><p class="text-muted mb-2">Online scheduling may take a moment to connect. If submission is unavailable, you can prepare an email with the same details.</p><button id="scheduleEmail" class="btn btn-outline-secondary" type="button">Prepare scheduling email</button><p id="emailStatus" class="text-muted mt-2" role="status" aria-live="polite"></p><textarea id="scheduleEmailText" class="form-control mt-2" readonly hidden aria-label="Prepared scheduling email"></textarea><p class="text-muted mt-2" style="font-size:.8rem">Please leave out access codes. Read our <a href="privacy.html">privacy notice</a> and <a href="terms.html">service terms</a>.</p></div>
 
       <!-- STEP 1 -->
       <div id="step1">
@@ -346,20 +325,20 @@
 
               <div class="row g-2">
                 <div class="col-md-6">
-                  <label class="form-label fw-bold">Full name</label>
+                  <label class="form-label fw-bold" for="name">Full name</label>
                   <input class="form-control" id="name" type="text" placeholder="John Smith" autocomplete="name" />
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label fw-bold">Phone number</label>
+                  <label class="form-label fw-bold" for="phone">Phone number</label>
                   <input class="form-control" id="phone" type="tel" placeholder="801-555-1234" autocomplete="tel" />
                 </div>
                 <div class="col-12">
-                  <label class="form-label fw-bold">Email (optional)</label>
+                  <label class="form-label fw-bold" for="email">Email (optional)</label>
                   <input class="form-control" id="email" type="email" placeholder="you@email.com" autocomplete="email" />
                 </div>
                 <div class="col-12">
-                  <label class="form-label fw-bold">Notes (gate code, pets, etc.)</label>
-                  <textarea class="form-control" id="notes" rows="4" placeholder="Anything we should know?"></textarea>
+                  <label class="form-label fw-bold" for="notes">Notes (service needs or questions)</label>
+                  <textarea class="form-control" id="notes" rows="4" placeholder="Please do not include gate codes or other sensitive information." maxlength="2000"></textarea>
                 </div>
               </div>
 
@@ -377,36 +356,31 @@
 
               <div class="row g-2">
                 <div class="col-12">
-                  <label class="form-label fw-bold">Street address</label>
+                  <label class="form-label fw-bold" for="addr1">Street address</label>
                   <input class="form-control" id="addr1" type="text" placeholder="123 N 400 W" autocomplete="address-line1" />
                 </div>
                 <div class="col-12">
-                  <label class="form-label fw-bold">Apt / Unit (optional)</label>
+                  <label class="form-label fw-bold" for="addr2">Apt / Unit (optional)</label>
                   <input class="form-control" id="addr2" type="text" placeholder="Apt 4B" autocomplete="address-line2" />
                 </div>
                 <div class="col-md-5">
-                  <label class="form-label fw-bold">City</label>
+                  <label class="form-label fw-bold" for="city">City</label>
                   <input class="form-control" id="city" type="text" placeholder="Lindon" autocomplete="address-level2" />
                 </div>
                 <div class="col-md-3">
-                  <label class="form-label fw-bold">State</label>
+                  <label class="form-label fw-bold" for="state">State</label>
                   <select class="form-select" id="state" autocomplete="address-level1">
                     <option value="UT" selected>UT</option>
-                    <option value="ID">ID</option>
-                    <option value="WY">WY</option>
-                    <option value="NV">NV</option>
-                    <option value="CO">CO</option>
-                    <option value="AZ">AZ</option>
-                  </select>
+                    </select>
                 </div>
                 <div class="col-md-4">
-                  <label class="form-label fw-bold">ZIP</label>
+                  <label class="form-label fw-bold" for="zip">ZIP</label>
                   <input class="form-control" id="zip" type="text" inputmode="numeric" placeholder="84042" autocomplete="postal-code" />
                 </div>
               </div>
 
               <div class="notice mt-3">
-                We only use this for scheduling and service. No spam.
+                Your details are used to arrange this request. Avoid access codes or tenant information in notes.
               </div>
             </div>
           </div>
@@ -473,25 +447,11 @@
   </section>
 
   <!-- Footer -->
-  <footer class="footer py-4">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-4 text-lg-start">Copyright &copy; Routine Relief 2026</div>
-        <div class="col-lg-4 my-3 my-lg-0">
-          <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/profile.php?id=61578854420699" aria-label="Routine Relief Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-          <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/routine_relief/" aria-label="Routine Relief Instagram Profile"><i class="fab fa-instagram"></i></a>
-        </div>
-        <div class="col-lg-4 text-lg-end">
-          <a class="link-dark text-decoration-none me-3" href="privacy.html">Privacy Policy</a>
-          <a class="link-dark text-decoration-none" href="terms.html">Terms of Use</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  </main><footer class="rr-footer"><div class="wrap footer-inner"><div><strong>Routine Relief</strong><div class="footer-contact">Utah County · <a href="mailto:routinereliefsystems@gmail.com">routinereliefsystems@gmail.com</a></div><div class="footer-contact">© <span data-year>2026</span> Routine Relief</div></div><div class="footer-links"><a href="pricing.html">Pricing</a><a href="property-managers.html">Property Managers</a><a href="privacy.html">Privacy</a><a href="terms.html">Service terms</a><a href="https://www.instagram.com/routine_relief/" rel="noopener noreferrer" target="_blank">Instagram ↗</a></div></div></footer>
 
   <!-- Bootstrap + Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/scripts.js"></script>
+  <script src="js/relief.js"></script>
 
   <!-- Navbar shrink fallback -->
   <script>
@@ -506,9 +466,7 @@
     // ===== API BASE (local vs production) =====
     const IS_LOCAL = ["localhost", "127.0.0.1"].includes(window.location.hostname);
 
-    const API_BASE = IS_LOCAL
-      ? "http://localhost:3001"
-      : "https://routine-relief-api.onrender.com";
+    const API_BASE = "https://routine-relief-api.onrender.com";
 
     // ---------- Helpers ----------
     const $ = (sel) => document.querySelector(sel);
@@ -582,6 +540,7 @@
         btn.type = "button";
         btn.className = "date-btn";
         btn.dataset.iso = iso;
+        btn.setAttribute("aria-pressed","false");
 
         const dow = document.createElement("div");
         dow.className = "dow";
@@ -603,9 +562,11 @@
           if(state.selectedDates.has(iso)){
             state.selectedDates.delete(iso);
             btn.classList.remove("selected");
+            btn.setAttribute("aria-pressed","false");
           } else {
             state.selectedDates.add(iso);
             btn.classList.add("selected");
+            btn.setAttribute("aria-pressed","true");
           }
         });
 
@@ -619,14 +580,15 @@
         const key = chip.dataset.window;
         const input = chip.querySelector("input");
 
-        input.addEventListener("click", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-        });
+        input.tabIndex = -1;
+        input.setAttribute("aria-hidden","true");
+        input.style.pointerEvents = "none";
+        chip.setAttribute("aria-pressed","false");
 
         function toggle(){
           const nowChecked = !input.checked;
           input.checked = nowChecked;
+          chip.setAttribute("aria-pressed",String(nowChecked));
 
           if(nowChecked){
             state.selectedWindows.add(key);
@@ -661,10 +623,11 @@
       const zip = $("#zip").value.trim();
 
       if(!name){ showNotice("Please enter your full name."); return false; }
-      if(!phone){ showNotice("Please enter a phone number."); return false; }
+      if(!window.RR.validPhone(phone)){ showNotice("Enter a valid 10-digit phone number."); $("#phone").focus(); return false; }
+      if($("#email").value.trim() && !$("#email").checkValidity()){ showNotice("Enter a valid email address."); $("#email").focus(); return false; }
       if(!addr1){ showNotice("Please enter a street address."); return false; }
       if(!city){ showNotice("Please enter a city."); return false; }
-      if(!zip){ showNotice("Please enter a ZIP code."); return false; }
+      if(!/^\d{5}(?:-\d{4})?$/.test(zip)){ showNotice("Enter a valid ZIP code."); $("#zip").focus(); return false; }
 
       state.customer = { name, phone, email: $("#email").value.trim() };
       state.address = {
@@ -694,7 +657,7 @@
         `${state.address.city}, ${state.address.state} ${state.address.zip}`
       ].filter(Boolean);
 
-      const safeNotes = (state.notes || "").replace(/</g,"&lt;");
+      const safeNotes = window.RR.escapeHTML(state.notes || "");
 
       const html = `
         <div class="cardx mb-2">
@@ -708,14 +671,14 @@
         <div class="cardx mb-2">
           <div class="fw-bold mb-1"><i class="fa-solid fa-user me-2" style="color:var(--gold);"></i>Contact</div>
           <div class="text-muted">
-            ${state.customer.name}<br>
-            ${state.customer.phone}<br>
-            ${state.customer.email ? state.customer.email : "(email not provided)"}
+            ${window.RR.escapeHTML(state.customer.name)}<br>
+            ${window.RR.escapeHTML(state.customer.phone)}<br>
+            ${window.RR.escapeHTML(state.customer.email || "(email not provided)")}
           </div>
         </div>
         <div class="cardx mb-2">
           <div class="fw-bold mb-1"><i class="fa-solid fa-location-dot me-2" style="color:var(--gold);"></i>Service address</div>
-          <div class="text-muted">${addrLines.join("<br>")}</div>
+          <div class="text-muted">${addrLines.map(window.RR.escapeHTML).join("<br>")}</div>
         </div>
         <div class="cardx">
           <div class="fw-bold mb-1"><i class="fa-solid fa-note-sticky me-2" style="color:var(--gold);"></i>Notes</div>
@@ -740,21 +703,7 @@
       };
 
       try {
-        const resp = await fetch(`${API_BASE}/api/booking-request`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-
-        const data = await resp.json();
-
-        if (!resp.ok || !data.ok) {
-          throw new Error(
-            (data.errors && data.errors.join(" ")) ||
-            data.error ||
-            "Submission failed"
-          );
-        }
+        const data = await window.RR.fetchJSON(`${API_BASE}/api/booking-request`, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)},15000);
 
         // OPTIONAL debug output
         const debug = document.getElementById("debugOut");
@@ -777,7 +726,8 @@
 
       } catch (err) {
         console.error(err);
-        showNotice(err.message || "Something went wrong. Please try again.");
+        showNotice("We could not confirm submission. Please use “Prepare scheduling email” or contact routinereliefsystems@gmail.com. If you retry, mention that you attempted an online request so we can check for duplicates.");
+        $("#globalNotice").focus();
       }
     }
 
@@ -788,9 +738,10 @@
       state.address = {};
       state.notes = "";
 
-      $$("#dateGrid .date-btn").forEach(b => b.classList.remove("selected"));
+      $$("#dateGrid .date-btn").forEach(b => { b.classList.remove("selected"); b.setAttribute("aria-pressed","false"); });
       $$("#windowGrid .chip").forEach(ch => {
         ch.classList.remove("selected");
+        ch.setAttribute("aria-pressed","false");
         const input = ch.querySelector("input");
         input.checked = false;
       });
@@ -802,6 +753,13 @@
       setStep(1);
     }
 
+    document.getElementById("scheduleEmail").addEventListener("click",()=>{
+      if(!validateStep1() || !validateStep2())return;
+      const text="Hello Routine Relief,\n\nPlease review my preferred appointment times.\n\nPreferred dates: "+Array.from(state.selectedDates).sort().join(", ")+"\nTime windows: "+Array.from(state.selectedWindows).join(", ")+"\nName: "+state.customer.name+"\nPhone: "+state.customer.phone+"\nEmail: "+state.customer.email+"\nAddress: "+[state.address.line1,state.address.line2,state.address.city,state.address.state,state.address.zip].filter(Boolean).join(", ")+"\nNotes: "+state.notes+"\n\nPlease confirm availability separately.";
+      const box=document.getElementById("scheduleEmailText");box.value=text;box.hidden=false;
+      document.getElementById("emailStatus").textContent="Prepared, not sent. Review and send in your email app, or copy the text below.";
+      window.location.href="mailto:routinereliefsystems@gmail.com?subject="+encodeURIComponent("Scheduling request")+"&body="+encodeURIComponent(text);
+    });
     // Wire buttons
     $("#toStep2").addEventListener("click", () => {
       hideNotice();
